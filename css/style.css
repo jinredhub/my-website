@@ -1,0 +1,26 @@
+#fullScreenImage{
+	background-image: url("../images/bg.jpg");
+	height: 80vh;
+	width: 100%;
+	background-size: cover;
+	display: table;
+	text-align: center;
+}
+#title-container{
+	color: white;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+h1{
+	font-size: 56px;
+}
+.center-content{
+	text-align: center;
+}
+.bg-gray{
+	background-color: gray;
+}
+.pading{
+	padding-bottom: 50px;
+}
