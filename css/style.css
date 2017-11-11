@@ -19,8 +19,11 @@ h1{
 	text-align: center;
 }
 .bg-gray{
-	background-color: gray;
+	background-color: #e0e0e0;
 }
 .pading{
 	padding-bottom: 50px;
+}
+.padding-right{
+	padding-right: 100px;
 }
