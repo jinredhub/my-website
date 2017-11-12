@@ -18,12 +18,31 @@ h1{
 .center-content{
 	text-align: center;
 }
-.bg-gray{
+.bg-color1{
 	background-color: #e0e0e0;
 }
-.pading{
+.padding-bottom{
 	padding-bottom: 50px;
 }
 .padding-right{
-	padding-right: 100px;
+	padding-right: 50px;
+}
+.padding-left{
+	padding-left: 50px;
+}
+.bg-color2{
+	background-color: green;
+}
+h2{
+	font-size: 36px;
+}
+p{
+	font-size: 18px;
+	line-height:170%;
+}
+.bg-color3{
+	background-color: #1b1c1d;
+}
+.white-font{
+	color: white;
 }
