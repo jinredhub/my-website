@@ -57,6 +57,9 @@ button{
 }
 
 @media only screen and (max-width: 1199px){
+	#title-container{
+		height: 50vh;
+	}
 	p{
 		font-size: 36px;
 	}
