@@ -46,6 +46,15 @@ p{
 .white-font{
 	color: white;
 }
+button{
+	background-color: #b4d02f;
+	border: none;
+	padding: 10px 30px;
+	font-size: 18px;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
 
 @media only screen and (max-width: 1199px){
 	p{
@@ -53,5 +62,12 @@ p{
 	}
 	h1{
 		font-size: 110px;
+	}
+	h2{
+		font-size: 72px;
+	}
+	button{
+		font-size: 36px;
+		border-radius: 10px;
 	}
 }
