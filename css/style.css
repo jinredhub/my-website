@@ -46,3 +46,12 @@ p{
 .white-font{
 	color: white;
 }
+
+@media only screen and (max-width: 1199px){
+	p{
+		font-size: 36px;
+	}
+	h1{
+		font-size: 110px;
+	}
+}
