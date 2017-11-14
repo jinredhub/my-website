@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Jin Redmond Full-Stack Developer</title>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- semantic ui cdn -->
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
 		<!-- bootstrap cdn -->
@@ -17,7 +16,7 @@
     		<div id="title-content">
     			<img src="images/profile-img.png">
 				<h1>Full-Stack<br>Web Developer</h1>
-		  		<button class="mail"> <i class="mail icon"></i><b>Email</b></button>
+		  		<button id="e-mail"> <i class="mail icon"></i><b>Email</b></button>
 				<br>
 				<br>
 				<p>check out my work below<i class="chevron circle down icon"></i>
@@ -27,19 +26,19 @@
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-12 col-xl-4 center-content">
+				<div class="col-12 col-md-4 center-content">
 					<div class="padding-bottom"></div>
 					<img src="images/icon1.png">
 					<h2>Responsive Web</h2>
 					<p>Design your website that would look great on a variety of devices. Desktops, Tablets and phones. Grow your business and platform that take advantage across all devices.</p>
 				</div>
-				<div class="col-12 col-xl-4 center-content">
+				<div class="col-12 col-md-4 center-content">
 					<div class="padding-bottom"></div>
 					<img src="images/icon2.png">
 					<h2>Ideas into Visual </h2>
 					<p>In order to design well structured website. I collaborate with clients to transform ideas into design. I sketch and wireframe interfaces to make it intuitive. </p>
 				</div>
-				<div class="col-12 col-xl-4 center-content">
+				<div class="col-12 col-md-4 center-content">
 					<div class="padding-bottom"></div>
 					<img src="images/icon3.png">
 					<h2>Coding Website</h2>
@@ -55,10 +54,10 @@
 			<div class="padding-bottom"></div>
 			<div class="container">
 				<div class="row">
-					<div class="col-12 col-xl-6">
+					<div class="col-12 col-md-6">
 						<img src="images/portfolio1.jpg" class="ui fluid image">
 					</div>
-					<div class="col-12 col-xl-6">
+					<div class="col-12 col-md-6">
 						<div class="padding-right padding-left">
 							<h2 class="padding-top-mobile">Giphy API</h2>
 							<p>This app will display cool gif image you want to see all you dreamed of when you were sleeping under the bed</p>
@@ -70,10 +69,10 @@
 				<div class="ui divider"></div>
 				<div class="padding-bottom"></div>
 				<div class="row">
-					<div class="col-12 col-xl-6">
+					<div class="col-12 col-md-6">
 						<img src="images/portfolio1.jpg" class="ui fluid image">
 					</div>
-					<div class="col-12 col-xl-6">
+					<div class="col-12 col-md-6">
 						<div class="padding-right padding-left">
 							<h2 class="padding-top-mobile">Giphy API</h2>
 							<p>This app will display cool gif image you want to see all you dreamed of when you were sleeping under the bed</p>
@@ -85,10 +84,10 @@
 				<div class="ui divider"></div>
 				<div class="padding-bottom"></div>
 				<div class="row">
-					<div class="col-12 col-xl-6">
+					<div class="col-12 col-md-6">
 						<img src="images/portfolio1.jpg" class="ui fluid image">
 					</div>
-					<div class="col-12 col-xl-6">
+					<div class="col-12 col-md-6">
 						<div class="padding-right padding-left">
 							<h2 class="padding-top-mobile">Giphy API</h2>
 							<p>This app will display cool gif image you want to see all you dreamed of when you were sleeping under the bed</p>
@@ -100,6 +99,33 @@
 			</div>
 			<div class="padding-bottom"></div>
 			<div class="padding-bottom"></div>
+		</div>
+
+		<!-- modal start -->
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+		  Launch demo modal
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		        ...
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
 
 		<div class="bg-color3 center-content">
@@ -119,7 +145,14 @@
 		</div>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script> -->
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<!-- bootstrap popper -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<!-- bootstrap js -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
     </body>
 </html>
