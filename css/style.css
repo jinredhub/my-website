@@ -56,6 +56,40 @@ button{
 	cursor: pointer;
 }
 
+/*.button{
+	background-color: #b4d02f;
+	padding: 10px 30px;
+	font-size: 18;
+	color: white;
+	border-radius: 5px;
+	text-decoration: none;
+}*/
+
+a{
+	color: white;
+}
+
+/*pseudo-class-----------------------------*/
+
+.button:link, .button:visited{
+	background-color: #b4d02f;
+	padding: 10px 30px;
+	font-size: 18;
+	color: white;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.button: hover{
+	background-color: red;
+}
+
+a: hover{
+	color: black;
+}
+
+/*-----------------------------------------*/
+
 @media only screen and (max-width: 767px){
 	#title-container{
 		height: 60vh;
