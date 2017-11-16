@@ -56,39 +56,47 @@ button{
 	cursor: pointer;
 }
 
-/*.button{
+.button{
 	background-color: #b4d02f;
 	padding: 10px 30px;
 	font-size: 18;
 	color: white;
 	border-radius: 5px;
 	text-decoration: none;
-}*/
+}
 
 a{
 	color: white;
 }
 
-/*pseudo-class-----------------------------*/
 
-.button:link, .button:visited{
+/* Start pseudo-class-----------------------------*/
+
+.button:link{
 	background-color: #b4d02f;
-	padding: 10px 30px;
-	font-size: 18;
 	color: white;
-	border-radius: 5px;
 	text-decoration: none;
 }
 
-.button: hover{
-	background-color: red;
+.button:hover{
+	background-color: #a6c126;
 }
 
-a: hover{
+button:hover{
+	background-color: #a6c126;
+}
+
+a:hover{
 	color: black;
 }
+.button:active{
+	background-color: #a6c126;
+}
+button:active{
+	background-color: #a6c126;
+}
 
-/*-----------------------------------------*/
+/* End pseudo-class-----------------------------------------*/
 
 @media only screen and (max-width: 767px){
 	#title-container{
