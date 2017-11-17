@@ -6,11 +6,12 @@ $("#e-mail").on("click", function(event){
 
 // opens github page
 $(".linkedIn-btn").on("click", function(){
-	window.open("http://github.com/jinredhub");
+	window.open("http://www.linkedin.com/in/jin-redmond");
 });
+
 // opens linked in page
 $(".github-btn").on("click", function(){
-	window.open("http://www.linkedin.com/in/jin-redmond");
+	window.open("http://github.com/jinredhub");
 });
 
 // opens first portfolio page 
