@@ -70,6 +70,13 @@ a{
 }
 
 
+/* gogle fonts-------------------------------------*/
+body{
+	font-family: 'Montserrat', sans-serif;
+}
+/*google fonts-------------------------------------*/
+
+
 /* Start pseudo-class-----------------------------*/
 
 .button:link{

@@ -1,8 +1,7 @@
 
 $("#e-mail").on("click", function(event){
 	console.log("email clicked");
-	// alertify.success("Message sent");
-	alert("Message sent");
+	
 })
 
 // opens github page
@@ -15,15 +14,15 @@ $(".github-btn").on("click", function(){
 });
 
 // opens first portfolio page 
-$("#link-prtfolio1").on("click", function(){
-	window.open();
+$("#link-portfolio1").on("click", function(){
+	window.open("https://nba-app-fun.herokuapp.com/stats.html");
 });
 // opens second portfolio page
-$("#link-prtfolio2").on("click", function(){
-	window.open();
+$("#link-portfolio2").on("click", function(){
+	window.open("https://jinredhub.github.io/scary_film_festival/");
 });
 // opens third portfolio page
-$("#link-prtfolio3").on("click", function(){
-	window.open();
+$("#link-portfolio3").on("click", function(){
+	window.open("https://jinredhub.github.io/TriviaGame/");
 });
 
