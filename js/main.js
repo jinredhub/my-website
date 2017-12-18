@@ -20,10 +20,10 @@ $("#link-portfolio1").on("click", function(){
 });
 // opens second portfolio page
 $("#link-portfolio2").on("click", function(){
-	window.open("https://jinredhub.github.io/scary_film_festival/");
+	window.open("https://nytime-react.herokuapp.com/");
 });
 // opens third portfolio page
 $("#link-portfolio3").on("click", function(){
-	window.open("https://jinredhub.github.io/TriviaGame/");
+	window.open("https://jinredhub.github.io/memory-game");
 });
 
