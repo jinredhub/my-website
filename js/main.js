@@ -16,14 +16,17 @@ $(".github-btn").on("click", function(){
 
 // opens first portfolio page 
 $("#link-portfolio1").on("click", function(){
-	window.open("https://nba-app-fun.herokuapp.com/stats.html");
+	window.open("https://vrooms.github.io/entrance/");
 });
 // opens second portfolio page
 $("#link-portfolio2").on("click", function(){
-	window.open("https://nytime-react.herokuapp.com/");
+	window.open("https://nba-app-fun.herokuapp.com/stats.html");
 });
 // opens third portfolio page
 $("#link-portfolio3").on("click", function(){
-	window.open("https://jinredhub.github.io/memory-game");
+	window.open("https://the-generators.github.io/whereAreMyFriends/");
 });
+
+
+
 
