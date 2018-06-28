@@ -40,6 +40,12 @@ $(document).ready(function(){
 	$("#link-portfolio3").on("click", function(){
 		window.open("https://the-generators.github.io/whereAreMyFriends/");
 	});
+	// initialize wow.js scroll animation
+	new WOW({
+		mobile: false,
+		offset: 50
+	}).init();
+	
 })
 
 
