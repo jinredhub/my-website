@@ -14,7 +14,7 @@ $(document).ready(function(){
 	});
 
 	$("#e-mail").on("click", function(event){
-		console.log("email clicked");
+		// console.log("email clicked");
 		
 	});
 
