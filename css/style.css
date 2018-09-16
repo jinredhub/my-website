@@ -16,6 +16,7 @@
 }
 h1{
 	font-size: 56px;
+	font-weight: bold;
 }
 .center-content{
 	text-align: center;
@@ -36,7 +37,12 @@ h1{
 	background-color: green;
 }
 h2{
+	font-size: 56px;
+	font-weight: bold;
+}
+h3{
 	font-size: 36px;
+	font-weight: bold;
 }
 p{
 	font-size: 18px;
