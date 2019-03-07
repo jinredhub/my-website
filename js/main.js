@@ -45,6 +45,15 @@ $(document).ready(function(){
 		mobile: false,
 		offset: 50
 	}).init();
+
+
+	// test formData
+	  if(window.FormData === undefined){
+                console.log('undefied');
+            }
+            else{
+                console.log('yes');
+        }
 	
 })
 
