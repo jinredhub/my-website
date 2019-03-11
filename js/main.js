@@ -47,14 +47,6 @@ $(document).ready(function(){
 	}).init();
 
 
-	// test formData
-	  if(window.FormData === undefined){
-                console.log('undefied');
-            }
-            else{
-                console.log('yes');
-        }
-	
 })
 
 
