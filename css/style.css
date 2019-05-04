@@ -671,8 +671,11 @@ body{
 
 *{
     box-sizing: border-box;
-    /* remove blue outline when focusing buttons */
-    outline: none;
+
+}
+*:focus{
+    /* change blue outline when focusing buttons */
+    outline-color: #727b84;  
 }
 
 body{
