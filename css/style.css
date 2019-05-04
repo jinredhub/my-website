@@ -1,82 +1,663 @@
-#title-container{
-	background-image: url("../images/bg.jpg");
-	height: 80vh;
-	width: 100%;
-	background-size: cover;
-	display: table;
-	text-align: center;
+
+/*utilities-------------------------*/
+.padding-inputEl{
+    padding: 5px 20px;
+  }
+  
+  .padding-nav, .space3{
+      padding-top: 84px;
+  }
+  .padding-nav-short, .space2{
+      padding-top: 60px;
+  }
+  .padding-nav-shorter, .space1{
+      padding-top: 40px;
+  }
+  .padding-space3{
+    padding-top: 84px;
+  }
+  .padding-space2{
+    padding-top: 60px;
+  }
+  .padding-space3{
+    padding-top: 40px;
+  }
+  
+  .padding-0{
+      padding: 0;
+  }
+  .padding-1{
+      padding:10px;
+  }
+  .padding-2{
+      padding: 20px;
+  }
+  
+  .padding-left-0{
+      padding-left: 0;
+  }
+  .padding-left-1{
+      padding-left: 10px;
+  }
+  .padding-left-2{
+    padding-left: 20px;
+  }
+  .padding-left-3{
+    padding-left: 30px;
+  }
+  .padding-left-4{
+    padding-left: 40px;
+  }
+  .padding-left-5{
+    padding-left: 50px;
+  }
+  .padding-left-6{
+    padding-left: 60px;
+  }
+  
+  .padding-right-0{
+      padding-right: 0;
+  }
+  .padding-right-1{
+      padding-right: 10px;
+  }
+  .padding-right-2{
+      padding-right: 20px;
+  }
+  .padding-top-0{
+      padding-top: 0;
+  }
+  .padding-top-1{
+      padding-top: 10px;
+  }
+  .padding-top-2{
+      padding-top: 20px;
+  }
+  .padding-bottom-0{
+      padding-bottom: 0;
+  }
+  .padding-bottom-1{
+      padding-bottom: 10px;
+  }
+  .padding-bottom-2{
+      padding-bottom: 20px;
+  }
+  .padding-lr-0{
+      padding-left: 0;
+      padding-right: 0;
+  }
+  .padding-lr-1{
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  .padding-lr-2{
+       padding-left: 20px;
+       padding-right: 20px;
+  }
+  .padding-lr-p1{
+      padding-left: 5%;
+      padding-right: 5%;
+  }
+  .padding-tb-5-10{
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+  .padding-tb-1{
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .padding-tb-2{
+      padding-top: 20px;
+      padding-bottom: 20px;
+  }
+  .margin-lr-1{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .margin-lr-2{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .margin-left-1{
+    margin-left: 10px;
+  }
+  .margin-left-2{
+    margin-left: 20px;
+  }
+  .margin-bottom-0{
+      margin-bottom: 0;
+  }
+  .margin-bottom-1{
+      margin-bottom: 10px;
+  }
+  .margin-bottom-2{
+      margin-bottom: 20px;
+  }
+  
+  .border-bottom-0{
+    border-bottom: none;
+  }
+  
+  .inputFormUnderline{
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    box-shadow: none;
+  }
+  
+  
+  .disp-none{
+    display: none;
+  }
+  .disp-block{
+    display: block;
+  }
+  .disp-inline{
+    display: inline;
+  }
+  .disp-inline-block{
+    display: inline-block;
+  }
+  .disp-flex{
+    display: flex;
+  }
+  
+  .flex-dir-col{
+    flex-direction: column;
+  }
+  .flex-dir-row{
+    flex-direction: row;
+  }
+  .justify-content--center{
+    justify-content: center;
+  }
+  .justify-content--end{
+    justify-content: flex-end;
+  }
+  .justify-content--start{
+    justify-content: flex-start;
+  }
+  .justify-content--space-between{
+    justify-content: space-between;
+  }
+  .justify-content--spaceBetween {
+    justify-content: space-between;
+  }
+  
+  .align-items--center{
+    align-items: center;
+  }
+  .align-items--flex-end{
+    align-items: flex-end;
+  }
+  .align-self--start{
+    align-self: start;
+  }
+  .align-self--end{
+    align-self: flex-end;
+  }
+  .align-items--flex-start{
+    align-items: flex-start;
+  }
+  
+  
+  
+  /*flex-item*/
+  .flex-100{
+    flex: 1 1 100%;
+  }
+  .flex-95{
+    flex: 1 1 95%;
+  }
+  .flex-85{
+    flex: 1 1 85%;
+  }
+  .flex-80 {
+    flex: 1 1 80%;
+  }
+  .flex-75{
+    flex: 1 1 75%;
+  }
+  .flex-40{
+    flex: 1 1 40%;
+  }
+  .flex-50{
+    flex: 1 1 50%;
+  }
+  .flex-66{
+    flex: 1 1 66%;
+  }
+  .flex-60{
+    flex: 1 1 60%;
+  }
+  .flex-66{
+    flex: 1 1 66.6%;
+  }
+  .flex-33{
+    flex: 1 1 33.3%;
+  }
+  .flex-25{
+    flex: 1 1 25%;
+  }
+  .flex-20{
+    flex: 1 1 20%;
+  }
+  .flex-15{
+    flex: 1 1 15%;
+  }
+  .flex-10{
+    flex: 1 1 10%;
+  }
+  
+  .text-align-center{
+      text-align: center;
+  }
+  
+  .bold{
+    font-weight: bold;
+  }
+  .heavy{
+    font-weight: 900;
+  }
+  .smallText{
+    font-size: 12px;
+  }
+  
+  
+  .width-100{
+    width: 100%;
+  }
+  .w100{
+    width: 100px;
+  }
+  .w150{
+    width: 150px;
+  }
+  .w200{
+    width: 200px;
+  }
+  
+  .h80{
+      height: 80px;
+  }
+  .h100{
+      height: 100px;
+  }
+  .h150{
+      height: 150px;
+  }
+  .h200{
+      height: 200px;
+  }
+  
+  
+  .text-primary{
+      color: #F59D18;
+  }
+  .text-white{
+      color: white;
+  }
+  .text-gray{
+      color: #bbbbbb;
+  }
+  .text-grayF2{
+      color: #F2F2F2;
+  }
+  .bg-primary{
+      background: #F59D18;
+  }
+  .bg-grayF2{
+    background: #F2F2F2;
+  }
+  
+  
+  .saveButtonContainer{
+      height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .invalid-feedback{
+    display: none;
+  }
+  .is-error ~ .invalid-feedback{
+    display: block;
+    color: red;
+  }
+  
+  /*messages*/
+  .noteMessage, .message{
+    padding: 10px 20px;
+    margin: 16px 0;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: #5b5b5b;
+    background-color: #f2f2f2;
+  }
+  .message-warning{
+    background-color: #fff3cd;
+    border-color: #ffeaaa;
+  }
+  .message-danger{
+    background-color: #ffd8d8;
+    border-color: #ff9191;
+  }
+  /*end messages*/
+  
+  .alertMeessage, .alertMessage{
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: 1px solid #fff3cd;
+    border-radius: 5px;
+    color: #5b5b5b;
+    background-color: #ffeaaa;
+  }
+  
+  .fontSize-1{
+    font-size: 1.1rem;
+  }
+  
+  .req::after{
+    content: '*';
+    /*font-size: 1.7rem;*/
+    color: red;
+    padding-left: 5px;
+    font-weight: bold;
+  }
+  
+  /*custom checkbox or radiobutton (square dark-green checkbox)--------------*/
+  /* Customize the label (the container) */
+  .checkBoxContainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding-top: 0.3rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .checkBoxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0.1px;
+    width: 0.1px;
+    overflow: hidden;
+    z-index: -1
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #f7f7f7;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .checkBoxContainer:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a  background color */
+  .checkBoxContainer input:checked ~ .checkmark {
+    background-color: white;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .checkBoxContainer input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .checkBoxContainer .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #F59D18;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  /*add outline when navigating with keyboard*/
+  .checkBoxContainer input:focus ~ .checkmark {
+    border-color: #5f5f5f;
+    box-shadow: inset 0 1px 1px rgba(0,0,0, .075) ,0 0 8px rgba(107, 107, 107, 0.6);
+  }
+  /*end custom checkbox or radiobutton (square dark-green checkbox)--------------*/
+  
+  /*custom radiobutton - circle (use custom checkbox or radiobutton class '.checkBoxContainer' and this class)---------------------------*/
+  .radioCircle .checkmark{
+    border-radius: 50%;
+  }
+  /* When the checkbox is checked, add a  background color */
+  .radioCircle input:checked ~ .checkmark {
+    background-color: #F59D18;
+  }
+  .radioCircle .checkmark:after{
+    width: 0.1px;
+    height: 0.1px;
+    border-color: #F59D18;
+  }
+  /*end custom radiobutton (circle)*/
+  
+  /*custom input file---------------*/
+  .inputfile{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .inputfile + label {
+    font-size: 1rem;
+    font-weight: normal;
+    color: black;
+    background-color: white;
+    display: inline-block;
+    padding: 8px 26px;
+    border: 1px solid #878786;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .inputfile:focus + label,
+  .inputfile + label:hover {
+    background-color: #F59D18;
+    color: white;
+  }
+  
+  .inputfile:focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  .inputfile + label * {
+    pointer-events: none;
+  }
+  /*end custom input file--------------*/
+  
+  .inputfileattachment + label{
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+  }
+  .inputfileattachment:focus + label,
+  .inputfileattachment + .fileUpload:hover {
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  /*custom checkbox input (For intake symptoms) --------------*/
+  input[type=checkbox].buttonLikeCheckbox{
+    /*display: none;*/
+    /*margin: 10px;*/
+    position: absolute;
+    opacity: 0;
+    height: 0.1px;
+    width: 0.1px;
+    overflow: hidden;
+    z-index: -1;
+  }
+  input[type=checkbox].buttonLikeCheckbox + label{
+    display:inline-block;
+    margin: 0 5px;
+    padding: 6px 2px;
+    background-color: white;
+    border: 1px solid #878786;
+    font-size: 1rem;
+    text-align: center;
+    border-radius: 3px;
+  }
+  
+  input[type=checkbox].buttonLikeCheckbox:checked + label {
+    background-color:#F59D18;
+    color: white;
+  }
+  input[type=checkbox].buttonLikeCheckbox:hover + label {
+    background-color: #E8891C;
+    color: white;
+  }
+  input[type=checkbox].buttonLikeCheckbox:active + label {
+    background-color: #d17729;
+    color: white;
+  }
+  /*add outline when navigating with keyboard*/
+  input[type=checkbox].buttonLikeCheckbox:focus + label{
+    border-color: #5f5f5f;
+    box-shadow: inset 0 1px 1px rgba(0,0,0, .075) ,0 0 8px rgba(107, 107, 107, 0.6);
+  }
+  /*end custom checkbox input--------------------*/
+  
+  /*custom radio button -------------------------*/
+  input[type=radio].buttonLikeRadio, input[type=radio].buttonLikeRadio-1, input[type=radio].buttonLikeRadio-2, input[type=radio].buttonLikeRadio-3, input[type=radio].buttonLikeRadio-4, input[type=radio].buttonLikeRadio-5, input[type=radio].buttonLikeRadio-6, input[type=radio].buttonLikeRadio-7{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  input[type=radio].buttonLikeRadio + label, input[type=radio].buttonLikeRadio-1 + label, input[type=radio].buttonLikeRadio-2 + label, input[type=radio].buttonLikeRadio-3 + label, input[type=radio].buttonLikeRadio-4 + label, input[type=radio].buttonLikeRadio-5 + label, input[type=radio].buttonLikeRadio-6 + label, input[type=radio].buttonLikeRadio-7 + label{
+    display:inline-block;
+    margin: 0 -2px;
+    padding: 8px 0px;
+    background-color: white;
+    border: 1px solid #878786;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  input[type=radio].buttonLikeRadio:checked + label, input[type=radio].buttonLikeRadio-1:checked + label, input[type=radio].buttonLikeRadio-2:checked + label, input[type=radio].buttonLikeRadio-3:checked + label, input[type=radio].buttonLikeRadio-4:checked + label, input[type=radio].buttonLikeRadio-5:checked + label, input[type=radio].buttonLikeRadio-6:checked + label, input[type=radio].buttonLikeRadio-7:checked + label {
+    background-color:#F59D18;
+    color: white;
+  }
+  input[type=radio].buttonLikeRadio:hover + label, input[type=radio].buttonLikeRadio-1:hover + label, input[type=radio].buttonLikeRadio-2:hover + label, input[type=radio].buttonLikeRadio-3:hover + label, input[type=radio].buttonLikeRadio-4:hover + label, input[type=radio].buttonLikeRadio-5:hover + label, input[type=radio].buttonLikeRadio-6:hover + label, input[type=radio].buttonLikeRadio-7:hover + label {
+    background-color: #E8891C;
+    color: white;
+  }
+  input[type=radio].buttonLikeRadio:active + label, input[type=radio].buttonLikeRadio-1:active + label, input[type=radio].buttonLikeRadio-2:active + label, input[type=radio].buttonLikeRadio-3:active + label, input[type=radio].buttonLikeRadio-4:active + label, input[type=radio].buttonLikeRadio-5:active + label, input[type=radio].buttonLikeRadio-6:active + label, input[type=radio].buttonLikeRadio-7:active + label, input[type=radio].buttonLikeRadio-1:active:focus + label, input[type=radio].buttonLikeRadio-2:active:focus + label, input[type=radio].buttonLikeRadio-3:active:focus + label, input[type=radio].buttonLikeRadio-4:active:focus + label, input[type=radio].buttonLikeRadio-5:active:focus + label, input[type=radio].buttonLikeRadio-6:active:focus + label, input[type=radio].buttonLikeRadio-7:active:focus + label  {
+    background-color: #d17729;
+    color: white;
+  }
+  input[type=radio].buttonLikeRadio:focus + label, input[type=radio].buttonLikeRadio-1:focus + label, input[type=radio].buttonLikeRadio-2:focus + label, input[type=radio].buttonLikeRadio-3:focus + label, input[type=radio].buttonLikeRadio-4:focus + label, input[type=radio].buttonLikeRadio-5:focus + label, input[type=radio].buttonLikeRadio-6:focus + label, input[type=radio].buttonLikeRadio-7:focus + label{
+    border-color: #5f5f5f;
+    box-shadow: inset 0 1px 1px rgba(0,0,0, .075) ,0 0 8px rgba(107, 107, 107, 0.6);
+  }
+  .round-right-border{
+    border-radius: 0 5px 5px 0;
+  }
+  .round-left-border{
+    border-radius: 5px 0 0 5px;
+  }
+  /*end custom radio button------------------------------*/
+  
+  /*custom table--------------------------------------*/
+  .myTable{
+    width: 100%;
+  }
+  .myTable th, .myTable td{
+    text-align: left;
+    padding: 20px 10px;
+  }
+  .myTable tbody > tr:nth-last-of-type(odd){
+    background-color: rgba(220, 220, 220, 0.5);
+  }
+  /*end custom table-----------------------------------*/
+
+  /* buttons -------------------------------------*/
+.btn{
+    border: none;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    color: black;
+    background-color: #dddddd;
 }
-#title-content{
-	color: white;
-	display: table-cell;
-	vertical-align: middle;
+.btn:hover{
+    background-color: #cccccc;
 }
-#myEmail{
-	margin-bottom: 0;
+.btn-primary{
+    color: white;
+    background-color: #F59D18;
 }
-h1{
-	font-size: 56px;
-	font-weight: bold;
+.btn-primary:hover{
+    background-color: #E8891C;
 }
-.center-content{
-	text-align: center;
-}
-.bg-color1{
-	background-color: #e0e0e0;
-}
-.padding-bottom{
-	padding-bottom: 50px;
-}
-.padding-right{
-	padding-right: 50px;
-}
-.padding-left{
-	padding-left: 50px;
-}
-.bg-color2{
-	background-color: green;
-}
-h2{
-	font-size: 56px;
-	font-weight: bold;
-}
-h3{
-	font-size: 36px;
-	font-weight: bold;
-}
-p{
-	font-size: 18px;
-	line-height:170%;
-}
-.bg-color3{
-	background-color: #1b1c1d;
-}
-.white-font{
-	color: white;
-}
-button{
-	background-color: #b4d02f;
-	border: none;
-	padding: 10px 30px;
-	font-size: 18px;
-	color: white;
-	border-radius: 5px;
-	cursor: pointer;
+.btn-primary:active, .btn-primary:focus, .btn-primary:active:focus, .btn-primary:active:hover{
+    background-color: #d17729;
 }
 
-.button{
-	background-color: #b4d02f;
-	padding: 10px 30px;
-	font-size: 18;
-	color: white;
-	border-radius: 5px;
-	text-decoration: none;
+.btn-danger{
+    color: white;
+    background-color: #ef4545;
 }
-
-a{
-	color: white;
+.btn-danger:hover{
+    background-color: #d83636;
 }
+.btn-danger:active, .btn-danger:focus, .btn-danger:active:focus, .btn-danger:active:hover{
+    background-color: #bf2a2a;
+}
+  /* end buttons -------------------------------------*/
 
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6
+  {
+      margin-top: 0;
+  }
 
 /* gogle fonts-------------------------------------*/
 body{
@@ -84,55 +665,189 @@ body{
 }
 /*google fonts-------------------------------------*/
 
+  /* //////////////////////////////////////////////////////////// */
+  /* ///////// start custom css //////////////////////////////// */
+  /* ////////////////////////////////////////////////////////// */
 
-/* Start pseudo-class-----------------------------*/
-
-.button:link{
-	background-color: #b4d02f;
-	color: white;
-	text-decoration: none;
+*{
+    box-sizing: border-box;
+    /* remove blue outline when focusing buttons */
+    outline: none;
 }
 
-.button:hover{
-	background-color: #a6c126;
+body{
+    background-color: #fcfbfa;
 }
 
-button:hover{
-	background-color: #a6c126;
+section{
+    max-width: 1024px;
+    margin: 0 auto;
+}
+p{
+    line-height: 170%;
+}
+.padding50{
+    padding-bottom: 50px;
+}
+.btn-green{
+    background-color: #b4d02f;
+    padding: 10px 30px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+.btn-green:hover{
+    background-color: #a6c126;
+}
+.btn-green:active{
+    background-color: #97af21;
 }
 
-a:hover{
-	color: #d3d3d3;
-	text-decoration: none;
+/* header========================================= */
+header{
+    height: 80vh;
+    background-image: url("../images/bg.jpg");
+    background-position: center;
+    background-size: cover;
+    color: white;
 }
-.button:active{
-	background-color: #97af21;
+header h1{
+    font-size: 56px;
+}
+header h2{
+    font-size: 22px;
+}
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+/* job details======================================= */
+#jobDetail h2{
+    font-size: 36px;
+}
+#jobDetail p{
+    font-size: 18px;
+}
+
+/* portfolio section================================== */
+.portfolioSection{
+    /* width: 100%; */
+}
+.portfolioSectionContainer{
+    background-color: #e0e0e0;
 
 }
-button:active{
-	background-color: #97af21;
+.portfolioSection img{
+    width: 100%;
+}
+.portfolioSection h1{
+    font-size: 56px;
+}
+.portfolioSection h2{
+    font-size: 36px;
+}
+.portfolioSection p{
+    font-size: 18px;
+}
+
+/* footer ======================================== */
+footer{
+    color: white;
+    height: 250px;
+    background-color: #1b1c1d;
+}
+footer button{
+    border-radius: 100px !important;
+    padding: 13px 16px !important;
+    font-size: 18px !important;
+    color: white !important;
+}
+footer .linkedin{
+    background-color: #007bff;
+}
+footer .linkedin:hover{
+    background-color: #0069b9;
+}
+footer .linkedin:active{
+    background-color: #015a9e;
+}
+footer .github{
+    background-color: #868e96;
+}
+footer .github:hover{
+    background-color: #727b84;
+}
+footer .github:active{
+    background-color: #676d74;
 }
 
 
-/* End pseudo-class-----------------------------------------*/
+/* media query=================================================== */
+@media(max-width: 767px){
+    .disp-flex{
+        flex-wrap: wrap;
+    }
+    .flex-100{
+    flex: 1 1 100%;
+    }
+    .flex-95{
+    flex: 1 1 100%;
+    }
+    .flex-85{
+    flex: 1 1 100%;
+    }
+    .flex-80 {
+    flex: 1 1 100%;
+    }
+    .flex-75{
+    flex: 1 1 100%;
+    }
+    .flex-40{
+    flex: 1 1 100%;
+    }
+    .flex-50{
+    flex: 1 1 100%;
+    }
+    .flex-66{
+    flex: 1 1 100%;
+    }
+    .flex-60{
+    flex: 1 1 100%;
+    }
+    .flex-66{
+    flex: 1 1 100%;
+    }
+    .flex-33{
+    flex: 1 1 100%;
+    }
+    .flex-25{
+    flex: 1 1 100%;
+    }
+    .flex-20{
+    flex: 1 1 100%;
+    }
+    .flex-15{
+    flex: 1 1 100%;
+    }
+    .flex-10{
+    flex: 1 1 100%;
+    }
 
-@media only screen and (max-width: 767px){
-	#title-container{
-		height: 60vh;
-	}
-	p{
-		font-size: 16px;
-	}
-	h1{
-		font-size: 40px;
-	}
-	h2{
-		font-size: 25px;
-	}
-	button{
-		font-size: 20px;
-	}
-	.padding-top-mobile{
-		padding-top: 30px;
-	}
+    header{
+        flex-wrap: nowrap !important;
+    }
+    header h1{
+        font-size: 36px;
+    }
+    #jobDebail h2{
+        font-size: 26px;
+    }
+    .portfolioSection h1{
+        font-size: 36px;
+    }
+    .portfolioSection h2{
+        font-size: 26px;
+    }
+
 }

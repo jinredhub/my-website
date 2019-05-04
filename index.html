@@ -1,156 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Jin Redmond Full-Stack Web Developer</title>
+        <title>Freelance Web Developer</title>
         <!-- favicon -->
 		<link rel="shortcut icon" href="./images/favicon.ico">
         <!-- google fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-		<!-- bootstrap cdn -->
-		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 		<!-- font awesome -->
 		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
+        <!-- normalize -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <!-- css -->
 		<link rel="stylesheet" type="text/css" href="css/animate.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css?version=3">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 
 		<!-- google analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126824002-1"></script>
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126824002-1"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
 
 		  gtag('config', 'UA-126824002-1');
-		</script>		
+		</script>		 -->
 
     </head>
     <body>
-    	<!-- title section -->
-    	<header id="title-container">
-    		<br>
-    		<div id="title-content">
-    			<img src="images/profile-img.png">
-				<h1>Full-Stack<br>Web Developer</h1>
-				<br>
-				<a class="button"  href="mailto:jin@nieblo.com"><i class="fa fa-envelope" aria-hidden="true"></i><b> Email</b></a>
-				<br>
-				<br>
-				<p>
-					<a href="https://docs.google.com/document/d/1InUt8CBLhjEAq7sgX7eZkJj0PEAirH0csd-5XkM1vfs/edit?usp=sharing">view my resume <i class="fas fa-user-circle"></i></a>
-				</p>
-				<p>
-					<!-- <a href="#myWork">check out my work below<i class="chevron circle down icon"></i></a> -->
-					<a href="#myWork">check out my work below <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
-				</p>
-				<br>
-    		</div>
+
+        <!-- title section -->
+    	<header class='disp-flex justify-content--center align-items--center flex-dir-col'>
+                <h1 class="text-align-center">Full-Stack <br> Web Developer</h1>
+                <p>
+                    <a class='btn btn-green' href="mailto:jin@nieblo.com">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        Email
+                    </a>
+                </p>
+                <p>
+                    <a href="https://docs.google.com/document/d/1InUt8CBLhjEAq7sgX7eZkJj0PEAirH0csd-5XkM1vfs/edit?usp=sharing">view my resume <i class="fas fa-user-circle"></i></a>
+                </p>
+                <p>
+                    <a href="#myWork">check out my work below <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
+                </p>
     	</header>
 
-		<!-- 3 icons -->
-		<section class="container">
-			<div class="row">
-				<div class="col-12 col-md-4 center-content">
-					<div class="padding-bottom"></div>
-					<img src="images/icon1.png">
-					<h3>Responsive Web</h3>
-					<p>Design your website to look great on a variety of devices. Desktops, Tablets and phones. Grow your business and platform to take advantage across all devices.</p>
-				</div>
-				<div class="col-12 col-md-4 center-content">
-					<div class="padding-bottom"></div>
-					<img src="images/icon2.png">
-					<h3>Ideas Realized</h3>
-					<p>In order to design well structured websites I collaborate with clients to transform ideas into design. I sketch and wireframe interfaces and iterate to reach intuitive designs.</p>
-				</div>
-				<div class="col-12 col-md-4 center-content">
-					<div class="padding-bottom"></div>
-					<img src="images/icon3.png">
-					<h3>Website Coding</h3>
-					<p>I build websites with HTML5, CSS3 and Javascript. I also work with frameworks such as Bootstrap, jQuery and React where appropriate, as well as backend frameworks like Node.js, and databases such as MySQL.</p>
-				</div>
-			</div>
-			<div class="padding-bottom"></div>
-		</section>
-
-		<!-- portfolio section -->
-		<section class="bg-color1">
-			<div class="padding-bottom"></div>
-			 <a id="myWork"><h2 class='center-content wow fadeIn'>My Work</h2></a>
-			<div class="padding-bottom"></div>
-			<div class="container">
-				<div class="row">
-
-					<!-- first portfolio -->
-					<div class="col-12 col-md-6 wow fadeInLeft">
-						<img src="images/portfolio_vrooms.png" class="img-fluid rounded">
-					</div>
-					<div class="col-12 col-md-6 wow fadeInRight">
-						<div class="padding-right padding-left">
-							<h3 class="padding-top-mobile">VRooms</h3>
-							<p>This app allows you to place furniture of your choice into a room, and fit them to the exact measurements of your room. You can then view the resulting room in a 360 degree virtual reality environment.</p>
-							<button id="link-portfolio1"><b>visit website</b></button>
-						</div>
-					</div>
-
-				</div>
-				<div class="padding-bottom"></div>
-				<div class="ui divider"></div>
-				<div class="padding-bottom"></div>
-				<div class="row">
-
-					<!-- second portfolio -->
-					<div class="col-12 col-md-6 wow fadeInLeft">
-						<img src="images/portfolio1.png" class="img-fluid rounded">
-					</div>
-					<div class="col-12 col-md-6 wow fadeInRight">
-						<div class="padding-right padding-left">
-							<h3 class="padding-top-mobile">NBA Stats</h3>
-							<p>Select two NBA players of your choice. You can compare their points, rebounds, assists, steals and blocks in a chart.</p>
-							<button id="link-portfolio2"><b>visit website</b></button>
-						</div>
-					</div>
-
-				</div>
-				<div class="padding-bottom"></div>
-				<div class="ui divider"></div>
-				<div class="padding-bottom"></div>
-				<div class="row">
-
-					<!-- third portfolio -->
-					<div class="col-12 col-md-6 wow fadeInLeft">
-						<img src="images/portfolio_whereAre.png" class="img-fluid rounded">
-					</div>
-					<div class="col-12 col-md-6 wow fadeInRight">
-						<div class="padding-right padding-left">
-							<h3 class="padding-top-mobile">Map My Friends</h3>
-							<p>See your friends' instagram pictures by clicking on the location they were taken on a map.</p>
-							<button id="link-portfolio3"><b>visit website</b></button>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<div class="padding-bottom"></div>
-			<div class="padding-bottom"></div>
-		</section>
+        <main>
+            <!-- job detail section -->
+            <section id='jobDetail'>
+                <div class="padding50"></div>
+                <h1 hidden>job details</h1>
+                <div class="disp-flex">
+                    <div class="flex-33 text-align-center padding-2">
+                        <img src="./images/icon1.png" alt="thumbnail of responsive website">
+                        <h2>Responsive Web</h2>
+                        <p>Design your website to look great on a variety of devices. Desktops, Tablets and phones. Grow your business and platform to take advantage across all devices.</p>
+                    </div>
+                    <div class="flex-33 text-align-center padding-2">
+                        <img src="./images/icon2.png" alt="thumbnail of ideas">
+                        <h2>Ideas Realized</h2>
+                        <p>In order to design well structured websites I collaborate with clients to transform ideas into design. I sketch and wireframe interfaces and iterate to reach intuitive designs.</p>
+                    </div>
+                    <div class="flex-33 text-align-center padding-2">
+                        <img src="./images/icon3.png" alt="thumbnail of code">
+                        <h2>Website Coding</h2>
+                        <p>I build websites with HTML5, CSS3 and Javascript. I also work with frameworks such as Bootstrap, jQuery and React where appropriate, as well as backend frameworks like Node.js, and databases such as MySQL.</p>
+                    </div>
+                </div>
+                <div class="padding50"></div>
+            </section>
+            
+            <!-- portfolio section -->
+            <div class='portfolioSectionContainer'>
+                <section class="portfolioSection">
+            
+                    <div class="padding50"></div>
+                    <h1 class='text-align-center wow fadeIn' id="myWork">My Works</h1>
+                    <div class="disp-flex">
+                        <div class="flex-50 padding-2 wow fadeInLeft">
+                                <img src="./images/portfolio_pinit.png" alt="thumbnail of pinit website">
+                        </div>
+                        <div class="flex-50 padding-2 wow fadeInRight">
+                            <h2>PinIt</h2>
+                            <p>On this webapp, you are able to save Pins similar when you using Pinterest. Please create your account to use this site.</p>
+                            <button class='btn btn-green visitPinterestButton'>visit website</button>
+                        </div>
+                    </div>
+                    
+                    <div class="padding50"></div>
+                    <div class="padding50"></div>
+    
+                    <div class="disp-flex">
+                        <div class="flex-50 padding-2 wow fadeInLeft">
+                            <img src="./images/portfolio_vrooms.png" alt="thumbnail of vr-webapp">
+                        </div>
+                        <div class="flex-50 padding-2 wow fadeInRight">
+                            <h2>Vrooms</h2>
+                            <p>This app allows you to place furniture of your choice into a room, and fit them to the exact measurements of your room. You can then view the resulting room in a 360 degree virtual reality environment.</p>
+                            <button class='btn btn-green visitVroomButton'>visit website</button>
+                        </div>
+                    </div>
+    
+                    <div class="padding50"></div>
+                    <div class="padding50"></div>
+    
+                    <div class="disp-flex">
+                        <div class="flex-50 padding-2 wow fadeInLeft">
+                            <img src="./images/portfolio_whereAre.png" alt="thumbnail of webapp using instagram api">
+                        </div>
+                        <div class="flex-50 padding-2 wow fadeInRight">
+                            <h2>Instagram-API</h2>
+                            <p>See your friends' instagram pictures by clicking on the location they were taken on a map.</p>
+                            <button class='btn btn-green visitInstaAPIButton'>visit website</button>
+                        </div>
+                    </div>
+    
+                    <div class="padding50"></div>
+                    <div class="padding50"></div>
+                </section>
+            </div>
+            
+        </main>
 
 		<!-- footer -->
-		<footer class="bg-color3 center-content">
-			<div class="padding-bottom"></div>
-			<button class="btn rounded-circle btn-primary linkedIn-btn">
-			  <i class="fab fa-linkedin-in"></i>
-			</button>
-			<button class="btn rounded-circle btn-secondary github-btn">
-			  <i class="fab fa-github-alt"></i>
-			</button>
-			<br>
-			<br>
-			<p class="white-font">Copyright <i class="fas fa-copyright"></i> 2017 Jin Redmond</p>
-			<div class="padding-bottom"></div>
-			<div class="padding-bottom"></div>
-
+		<footer class='disp-flex justify-content--center align-items--center flex-dir-col'>
+            <div class='padding-bottom-2'>
+                <button type="button" class='btn linkedin' aria-label="click to go to my linkedIn page"><i class="fab fa-linkedin-in"></i></button>
+                <button type="button" class='btn github' aria-label="click to go to my github page"><i class="fab fa-github-alt"></i></button>
+            </div>
+            <p>Copyright <i class="fas fa-copyright"></i> 2017 Jin Redmond</p>
 		</footer>
 
 
