@@ -690,17 +690,17 @@ p{
     padding-bottom: 50px;
 }
 .btn-green{
-    background-color: #b4d02f;
+    background-color: #109078;
     padding: 10px 30px;
     font-size: 18px;
     color: white;
     font-weight: bold;
 }
 .btn-green:hover{
-    background-color: #a6c126;
+    background-color: #0b8670;
 }
 .btn-green:active{
-    background-color: #97af21;
+    background-color: #087763;
 }
 
 /* header========================================= */
