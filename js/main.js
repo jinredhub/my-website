@@ -37,6 +37,22 @@ $(document).ready(function(){
 		offset: 50
 	}).init();
 
+    $('#test').html(`
+            <li>
+                <span>Name</span><div class='toggleProviderEvents'>click here</div>
+            </li>
+            <li>
+                <span>Name</span><div class='toggleProviderEvents'>click here</div>
+            </li>
+            <li>
+                <span>Name</span><div class='toggleProviderEvents'>click here</div>
+            </li>
+        `);
+
+    $('.toggleProviderEvents').on('click', function(){
+        alert('worked!');
+    })
+
 });
 
 
