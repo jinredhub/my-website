@@ -37,6 +37,10 @@ $(document).ready(function(){
 		offset: 50
 	}).init();
 
+    $('#idea').on('click', function(){
+        $(this).html('hi');
+    })
+
 });
 
 
