@@ -10,7 +10,7 @@
 
         <style>
             body{
-                background-color: yellow;
+                background-color: pink;
             }
             #waveform1, #waveform2{
                 border: 1px solid black;
@@ -639,8 +639,9 @@
 
             startRecordingButton.addEventListener("click", function () {
                 // Initialize recorder
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices;
-                navigator.getUserMedia(
+                // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+                // navigator.getUserMedia(
+                navigator.mediaDevices.getUserMedia(
                 {
                     audio: true
                 },
