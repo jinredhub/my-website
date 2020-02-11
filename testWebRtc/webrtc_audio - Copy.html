@@ -10,7 +10,7 @@
 
         <style>
             body{
-                background-color: pink;
+                background-color: gray;
             }
             #waveform1, #waveform2{
                 border: 1px solid black;
@@ -639,13 +639,54 @@
 
             startRecordingButton.addEventListener("click", function () {
                 // Initialize recorder
-                // navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-                // navigator.getUserMedia(
-                navigator.mediaDevices.getUserMedia(
-                {
-                    audio: true
-                },
-                function (e) {
+                // navigator.mediaDevices.getUserMedia(
+                // {
+                //     audio: true
+                // },
+                // function (e) {
+                //     console.log("user consent");
+
+                //     // creates the audio context
+                //     window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                //     context = new AudioContext();
+
+                //     // creates an audio node from the microphone incoming stream
+                //     mediaStream = context.createMediaStreamSource(e);
+
+                //     // https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createScriptProcessor
+                //     // bufferSize: the onaudioprocess event is called when the buffer is full
+                //     var bufferSize = 2048;
+                //     var numberOfInputChannels = 2;
+                //     var numberOfOutputChannels = 2;
+                //     if (context.createScriptProcessor) {
+                //         recorder = context.createScriptProcessor(bufferSize, numberOfInputChannels, numberOfOutputChannels);
+                //     } else {
+                //         recorder = context.createJavaScriptNode(bufferSize, numberOfInputChannels, numberOfOutputChannels);
+                //     }
+
+                //     recorder.onaudioprocess = function (e) {
+                //         leftchannel.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+                //         rightchannel.push(new Float32Array(e.inputBuffer.getChannelData(1)));
+                //         recordingLength += bufferSize;
+                //     }
+
+                //     // we connect the recorder
+                //     mediaStream.connect(recorder);
+                //     recorder.connect(context.destination);
+                // },
+                //             function (e) {
+                //                 console.error(e);
+                //             });
+
+
+
+                const constraintObj = {
+                    audio: true,
+                }
+
+                // get audio stream from user's mic
+                navigator.mediaDevices.getUserMedia(constraintObj)
+                .then(function(e){
                     console.log("user consent");
 
                     // creates the audio context
@@ -675,11 +716,16 @@
                     // we connect the recorder
                     mediaStream.connect(recorder);
                     recorder.connect(context.destination);
-                },
-                            function (e) {
-                                console.error(e);
-                            });
+                })
+                .catch(function(err){
+                    // user didn't allow it
+                    console.log(err.name, err.message);
+                });
             });
+
+
+
+
 
             stopRecordingButton.addEventListener("click", function () {
 
