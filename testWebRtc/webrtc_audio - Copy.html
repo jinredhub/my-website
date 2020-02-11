@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="keywords" content="music, ai, diagnostics">
+        <meta name="description" content="Learning music is hard, personal and expensive. Kena is an AI-based music practice destination helping you through every step of your journey.">       
+        <title>Kena.AI</title>
+
+
+        <style>
+            #waveform1, #waveform2{
+                border: 1px solid black;
+                position: relative;
+                min-height: 10px;
+                width: 100%;
+                z-index: 0;
+            }
+            #waveform1 wave, #waveform2 wave{
+                overflow: hidden !important;
+            }
+            #selectRange{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            /*========================================*/
+            .inputWrap{
+                display: grid;
+                grid-template-rows: max-content 1em;
+                margin: 1em auto;
+                width: 20em;
+                overflow: hidden;
+                position: relative;
+            }
+            .slider{
+              /*  width: 100%;   
+                height: 100px;
+                cursor: pointer;    
+                background-color: pink;  
+                -webkit-appearance: none;  */
+                
+            }
+            .sr-only{
+                position: absolute;  
+                clip-path: inset(50%);
+            }
+            input[type='range']{
+                grid-column: 1;
+                grid-row: 2;
+                -webkit-appearance: none;
+                background: none;
+                color: #000;
+                font: inherit;
+                margin: 0;
+                pointer-events: none;
+            }
+            /*same-------------------------*/
+            /*input[type='range']::-webkit-slider-runnable-track{
+                -webkit-appearance: none;
+            }
+            input[type='range']::-webkit-slider-thumb{
+                -webkit-appearance: none;
+            }
+            input[type='range']::-webkit-slider-thumb{
+                -webkit-appearance: none;
+            }*/
+            /*end same-----------------------*/
+
+            /*same----------------------------*/
+             input[type='range']::-webkit-runnable-track{
+                background: none;
+                height: 100%;
+                width: 100%;
+            }
+            input[type='range']::-moz-range-track{
+                background: none;
+                height: 100%;
+                width: 100%;
+            }
+            /*end same------------------------*/
+
+            /*same----------------------------*/
+            input[type='range']::-webkit-slider-thumb{
+                background: green;
+                border: none;
+                border-radius: 0;
+                pointer-events: auto;
+                width: 1em;
+                height: 1em;
+                -webkit-appearance: none;
+            }
+            input[type='range']::-moz-range-thumb{
+                background: green;
+                border: none;
+                border-radius: 0;
+                pointer-events: auto;
+                width: 1em;
+                height: 1em;
+                -webkit-appearance: none;
+            }
+            /*end same------------------------*/
+
+            /*try using canvas===============================*/
+            canvas{
+                /*border: 1px solid red;*/
+                z-index: 2;
+                position: absolute;
+                top:0; 
+                left:0; 
+                width: 100%;
+                height: 100%;
+            }
+            .canvasContainer{
+                position: relative;
+                height: 128px;
+                width: 100%;
+            }
+            #canvasContainer2{
+                width: 200%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Audio</h1>
+
+        <button id="startRecordingButton">Start recording</button>
+        <button id="stopRecordingButton">Stop recording</button>
+        <button id="playButton">Play</button>
+        <button id="downloadButton">Download</button>
+
+        <br><br>
+        
+        <button id='playWaveform'>play waveform</button> <br>
+        <button id='pauseWaveform'>pause</button> <br>
+        <button id='setStartRangeButton'>set start range</button> <br>
+        <button id='setEndRangeButton'>set end range</button> <br>
+        <button id='checkSizeButton'>check size</button>
+        <div>
+            duration: <span id='duration'>0</span> <br>
+            You can play audio region <br>
+            start: <span id='startRangeNumb'>0</span> px, ?? sec <br>
+            end: <span id='endRangeNumb'>0</span> px, ?? sec <br>
+            resize screen?
+        </div>
+        
+
+        <br><br><br>
+
+        <!-- ======================================================= -->
+        <!-- input range-------------------------------------------- -->
+        <div class='inputWrap' role='group' aria-labelledby='multi-lbl'>
+            <!-- <div id='multi-lbl'>Multi thumb slider:</div> -->
+            <!-- <label class='sr-only' for="a">value A:</label> -->
+            <input id='a' type="range" min='-50' max='50' value='-30' class='slider'>
+            <!-- <label class='sr-only' for="b">value :</label> -->
+            <input id='b' type="range" min='-50' max='50' value='20' class='slider'>      
+        </div>
+
+        <!-- =========================================================== -->
+        <!-- bigger waveform-------------------------------------------- -->
+        <div id='useItAsRoo2' style='overflow-x: scroll; overflow-y: hidden;'>
+            <div class='canvasContainer' id='canvasContainer2'>
+                <div id='waveform2'></div>   
+                <canvas class='canvas' id='canvas2' width='400' height=300></canvas>
+            </div>            
+        </div>
+
+
+        <!-- canvas----------------------------------------------------- -->
+        <div class='canvasContainer' id='canvasContainer1'>
+            <div id='waveform1'></div>   
+            <canvas class='canvas' id='canvas1' width='400' height=300></canvas>
+        </div>
+        
+
+        <!-- ============================================================ -->
+
+<!--         <div id='waveform'></div>
+ -->
+        <!-- ============================================================ -->
+
+        <!-- jquery -->
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+        <!-- howler -->
+        <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.core.min.js"></script> -->
+
+        <!-- wavesurfer.js audio waveform visualization -->
+        <script src="https://unpkg.com/wavesurfer.js"></script>
+
+        <script>
+            // canvas 
+            // note: don't set a canvas's width and height through CSS, this will stretch/compress the actual canvas, scaling the contents
+            var leftImg = new Image();
+            leftImg.src = './audioCropArrowLeft.png';
+
+            var rightImg = new Image();
+            rightImg.src = './audioCropArrowRight.png';
+
+            var leftImg2 = new Image();
+            leftImg2.src = './audioCropArrowLeft.png';
+
+            var rightImg2 = new Image();
+            rightImg2.src = './audioCropArrowRight.png';
+
+            // initial image position (image, dx, dy, With, Height)
+            const leftTrimImgWidth = 30;
+            const leftTrimImgHeight = 128;
+
+            const rightTrimImgWidth = 30;
+            const rightTrimImgHeight = 128;
+
+            const imgDistFromTop = 0;
+            // leftImg.onload = function(){
+            //     ctx.drawImage(img, 12, imgDistFromTop, imgWidth, imgHeight);
+            // };
+
+            // var canvas = document.getElementById('canvas1');
+            // var ctx = canvas.getContext('2d');
+            var canva1 = null;
+            var ctx1 = null;
+            var canva2 = null;
+            var ctx2 = null;
+            // var canvasOffset = $('#canvas').offset();
+            // var offsetX = canvasOffset.left;
+            // var offsetY = canvasOffset.top;
+            // var rect = canvas.getBoundingClientRect();
+            // var root = document.documentElement;
+            var rect1 = null;
+            var root1 = null;
+            var rect2 = null;
+            var root2 = null;   // use scrollLeft to get el's scrolled distance
+            // console.log('first rect: ', rect);
+
+            // var canvasWidth = canvas.width;
+            // var canvasHeight = canvas.height;
+            var canvasWidth1 = null;
+            var canvasHeight1 = null;
+            var canvasWidth2 = null;
+            var canvasHeight2 = null;
+
+            var isDraggingLeftImage = false;
+            var isDraggingRightImage = false;
+
+            var leftTrimImgX = 0;
+            var rightTrimImgX = 300;
+            /*
+                note:
+                leftTrimImgX for canvas2 is: leftTrimImgX * widthRatio
+                rightTrimImgX for canvas2 is: rightTrimImgX * widthRatio
+            */
+            var mouseX = 0;
+
+            var widthRatio = null;
+
+
+            function resizeCanvasContent(){
+                // resize canvs content
+
+                // canvas1----------------------------------------------------------------------------------
+                console.log('resize canvas content');
+                canvas1 = document.getElementById('canvas1');
+
+                console.log('canvas1: ', canvas1);
+                ctx1 = canvas1.getContext('2d');
+
+                rect1 = canvas1.getBoundingClientRect();
+                console.log('rect1: ', rect1)
+                root1 = document.documentElement;
+                // console.log('first rect: ', rect1);
+               
+                const containerWidth1 = $('#canvasContainer1').innerWidth();
+                const containerHeight1 = $('#canvasContainer1').innerHeight();
+                console.log('w1, h1: ', containerWidth1, containerHeight1);
+                ctx1.canvas.width = containerWidth1;
+                ctx1.canvas.height = containerHeight1;
+
+                canvasWidth1 = canvas1.width;
+                canvasHeight1 = canvas1.height;
+
+                // initial right image position
+                rightTrimImgX = containerWidth1 - rightTrimImgWidth;
+
+
+                // draw image
+                ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+
+                // canvas2----------------------------------------------------------------------------------
+                console.log('resize canvas content');
+                canvas2 = document.getElementById('canvas2');
+
+                console.log('canvas: ', canvas2);
+                ctx2 = canvas2.getContext('2d');
+
+                rect2 = canvas2.getBoundingClientRect();
+                console.log('rect2: ', rect2);
+                // root2 = document.documentElement;
+                root2 = document.getElementById('useItAsRoo2');
+               
+                const containerWidth2 = $('#canvasContainer2').innerWidth();
+                const containerHeight2 = $('#canvasContainer2').innerHeight();
+                console.log('w, h: ', containerWidth2, containerHeight2);
+                ctx2.canvas.width = containerWidth2;
+                ctx2.canvas.height = containerHeight2;
+
+                canvasWidth2 = canvas2.width;
+                canvasHeight2 = canvas2.height;
+
+                // calculate width ratio-----------------------
+                widthRatio = containerWidth2 / containerWidth1;
+                console.log('widthRatio: ', widthRatio);
+                console.log('w1, w2: ', containerWidth2, containerWidth1);
+
+                rightTrimImgX2 = containerWidth2 - rightTrimImgWidth;
+
+                // draw image
+                ctx2.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                ctx2.drawImage(rightImg, rightTrimImgX2, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+
+
+                // draw rectangle----------------------
+                // ctx.fillStyle = 'green';
+                // ctx.globalAlpha = 0.5;
+                // ctx.fillRect(0,0, 100, 100);
+                // ctx.globalAlpha = 1.0;
+            }
+
+
+            function handleMouseDown(e){
+                console.log('handleMouseDown');
+
+                const id = e.target.id;
+                // console.log('id: ', id);
+
+                if(id === 'canvas1'){
+                    console.log('canvas 1, e.clientX:================== ', e.clientX);
+                    // canvas1---------------------------------------------------------------------------------
+                    mouseX = e.clientX - rect1.left;
+                    // console.log('root1.scrollLeft:', root1.scrollLeft);
+                    // set the drag flag
+                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        isDraggingLeftImage = true;
+                    }
+                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        isDraggingRightImage = true;
+                    }
+                }
+                else{
+                    console.log('canvas 2, e.clientX::================== ', (e.clientX + root2.scrollLeft) / widthRatio);
+                    // canvas2---------------------------------------------------------------------------------
+                    mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
+                    // console.log('root2.scrollLeft:', root2.scrollLeft);
+                    // set the drag flag
+                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        isDraggingLeftImage = true;
+                    }
+                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        isDraggingRightImage = true;
+                    }
+                }
+               
+            }
+
+            function handleMouseUp(e){
+                console.log('handleMouseUp');
+
+                const id = e.target.id;
+                // console.log('id: ', id);
+                
+                if(id === 'canvas1'){
+                    // canvas1---------------------------------------------------------------------------------
+                    mouseX = e.clientX - rect1.left - root1.scrollLeft;
+
+                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        isDraggingLeftImage = false;
+                    }
+                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        isDraggingRightImage = false;
+                    }
+                }
+                else{
+                    // canvas2---------------------------------------------------------------------------------
+                    mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
+
+                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        isDraggingLeftImage = false;
+                    }
+                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        isDraggingRightImage = false;
+                    }
+                }
+               
+
+                // offset is the position relative to the document
+                // console.log(canvas.width, canvas.height, offsetX, offsetY);
+                // mouse event: clientX and Y will return the coordinates of the mouse (relative to scree???)
+
+                // console.log(e.clientX, e.clientY);
+                // console.log('mouse x: ', mouseX);
+            }
+
+            function handleMouseOut(e){
+                console.log('handleMouseOut');
+
+                const id = e.target.id;
+                // console.log('id: ', id);
+
+                if(id === 'canvas1'){
+                    // canvas1---------------------------------------------------------------------------------
+                    mouseX = e.clientX - rect1.left - root1.scrollLeft;
+
+                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        isDraggingLeftImage = false;
+                    }
+                    if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        isDraggingRightImage = false;
+                    }
+                }
+                else{
+                    // canvas1---------------------------------------------------------------------------------
+                    mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
+
+                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        isDraggingLeftImage = false;
+                    }
+                    if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        isDraggingRightImage = false;
+                    }
+                }
+
+                // user has left the canvas, so clear the drag flag
+                // isDragging = false;
+
+                // console.log('mouse out: ', mouseX);
+            }
+
+            function handleMouseMove(e){
+                console.log('handleMouseMove');
+                // console.log('isDraggingLeftImage: ', isDraggingLeftImage);
+                // console.log('isDraggingRightImage: ', isDraggingRightImage);
+                // console.log('L and R imgX: ', leftTrimImgX, rightTrimImgX);
+
+                // if the drag flag is set, clear the canvas and draw the image
+
+                const id = e.target.id;
+                // console.log('id: ', id);
+
+                if(id === 'canvas1'){
+                    // canvas1---------------------------------------------------------------------------------
+                    if(isDraggingLeftImage){
+                        if(leftTrimImgX > rightTrimImgX){
+                            // console.log('left over right===========================');
+                            leftTrimImgX = rightTrimImgX - rightTrimImgWidth;
+                            isDraggingLeftImage = false;
+                        }
+                        else{
+                            // console.log('left is not over right');
+                            mouseX = e.clientX - rect1.left - root1.scrollLeft;
+                            leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        }
+
+                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
+                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
+                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        // display value
+                        $('#startRangeNumb').text(leftTrimImgX);
+                    
+                       
+                    }
+                    if(isDraggingRightImage){
+                        if(leftTrimImgX > rightTrimImgX){
+                            rightTrimImgX = leftTrimImgX + leftTrimImgWidth;
+                            isDraggingRightImage = false;
+                        }
+                        else{
+                            mouseX = e.clientX - rect1.left - root1.scrollLeft;
+                            rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        }
+
+                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
+                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
+                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        // display value
+                        $('#endRangeNumb').text(rightTrimImgX);
+                    }
+                }
+                else{
+                    // canvas2---------------------------------------------------------------------------------
+                    if(isDraggingLeftImage){
+                        if(leftTrimImgX > rightTrimImgX){
+                            // console.log('left over right===========================');
+                            leftTrimImgX = rightTrimImgX - rightTrimImgWidth;
+                            isDraggingLeftImage = false;
+                        }
+                        else{
+                            // console.log('left is not over right');
+                            mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
+                            leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                        }
+
+                    //     mouseX = (e.clientX + root2.scrollLeft) / widthRatio - rect2.left;
+
+                    // if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    //     leftTrimImgX = mouseX - leftTrimImgWidth/2;
+
+                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
+                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
+                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        // display value
+                        $('#startRangeNumb').text(leftTrimImgX);
+                    
+                       
+                    }
+                    if(isDraggingRightImage){
+                        if(leftTrimImgX > rightTrimImgX){
+                            rightTrimImgX = leftTrimImgX + leftTrimImgWidth;
+                            isDraggingRightImage = false;
+                        }
+                        else{
+                            mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
+                            rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                        }
+
+                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
+                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
+                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                        // display value
+                        $('#endRangeNumb').text(rightTrimImgX);
+                    }
+                }
+
+                
+            }
+
+            function checkMousePositionIfInsideImage(mouseXposition){
+                console.log('checkMousePositionIfInsideImage');
+                console.log('mouseXposition: ', mouseXposition);
+                // var imgTopEdgeY = imgDistFromTop;
+                // var imgBottomEdgeY = imgDistFromTop + imgHeight;
+                var leftImgLeftEdgeX = leftTrimImgX;
+                var leftImgRightEdgeX = leftTrimImgX + leftTrimImgWidth;
+
+                var rightImgLeftEdgeX = rightTrimImgX;
+                var rightImgRightEdgeX = rightTrimImgX + rightTrimImgWidth;
+
+                // console.log('leftTrimImgX left, right:', leftImgLeftEdgeX, leftImgRightEdgeX);
+                // console.log('rightTrimImgX left, right:', rightImgLeftEdgeX, rightImgRightEdgeX);                
+                // console.log('mouseXposition: ', mouseXposition);
+
+                if(mouseXposition > leftImgLeftEdgeX && mouseXposition < leftImgRightEdgeX){
+                    console.log('mouse inside left img: ', true);
+                    return 'left';
+                }
+                else if(mouseXposition > rightImgLeftEdgeX && mouseXposition < rightImgRightEdgeX){
+                    console.log('mouse inside right img: ', true);
+                    return 'right';
+                }
+                else{
+                    console.log('mouse inside not in img: ', false);    
+                    return false;
+                }
+            }
+
+            // $('.canvas').mousedown(function(e){handleMouseDown(e)});
+            // $('.canvas').mousemove(function(e){handleMouseMove(e)});
+            // $('.canvas').mouseup(function(e){handleMouseUp(e)});
+            // $('.canvas').mouseout(function(e){handleMouseOut(e)});
+
+            $('.canvas').on('mousedown touchstart', function(e){handleMouseDown(e)});
+            $('.canvas').on('mousemove touchmove', function(e){handleMouseMove(e)});
+            $('.canvas').on('mouseup touchend', function(e){handleMouseUp(e)});
+            $('.canvas').on('mouseout', function(e){handleMouseOut(e)});
+
+
+            // recording===============================================
+            var startRecordingButton = document.getElementById("startRecordingButton");
+            var stopRecordingButton = document.getElementById("stopRecordingButton");
+            var playButton = document.getElementById("playButton");
+            var downloadButton = document.getElementById("downloadButton");
+
+
+            var leftchannel = [];
+            var rightchannel = [];
+            var recorder = null;
+            var recordingLength = 0;
+            var volume = null;
+            var mediaStream = null;
+            var sampleRate = 44100;
+            var context = null;
+            var blob = null;
+
+            var wavesurfer = '';
+            var start = 0;
+            var end = null;
+
+            startRecordingButton.addEventListener("click", function () {
+                // Initialize recorder
+                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+                navigator.getUserMedia(
+                {
+                    audio: true
+                },
+                function (e) {
+                    console.log("user consent");
+
+                    // creates the audio context
+                    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+                    context = new AudioContext();
+
+                    // creates an audio node from the microphone incoming stream
+                    mediaStream = context.createMediaStreamSource(e);
+
+                    // https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/createScriptProcessor
+                    // bufferSize: the onaudioprocess event is called when the buffer is full
+                    var bufferSize = 2048;
+                    var numberOfInputChannels = 2;
+                    var numberOfOutputChannels = 2;
+                    if (context.createScriptProcessor) {
+                        recorder = context.createScriptProcessor(bufferSize, numberOfInputChannels, numberOfOutputChannels);
+                    } else {
+                        recorder = context.createJavaScriptNode(bufferSize, numberOfInputChannels, numberOfOutputChannels);
+                    }
+
+                    recorder.onaudioprocess = function (e) {
+                        leftchannel.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+                        rightchannel.push(new Float32Array(e.inputBuffer.getChannelData(1)));
+                        recordingLength += bufferSize;
+                    }
+
+                    // we connect the recorder
+                    mediaStream.connect(recorder);
+                    recorder.connect(context.destination);
+                },
+                            function (e) {
+                                console.error(e);
+                            });
+            });
+
+            stopRecordingButton.addEventListener("click", function () {
+
+                // stop recording
+                recorder.disconnect(context.destination);
+                mediaStream.disconnect(recorder);
+
+                // we flat the left and right channels down
+                // Float32Array[] => Float32Array
+                var leftBuffer = flattenArray(leftchannel, recordingLength);
+                var rightBuffer = flattenArray(rightchannel, recordingLength);
+                // we interleave both channels together
+                // [left[0],right[0],left[1],right[1],...]
+                var interleaved = interleave(leftBuffer, rightBuffer);
+
+                // we create our wav file
+                var buffer = new ArrayBuffer(44 + interleaved.length * 2);
+                var view = new DataView(buffer);
+
+                // RIFF chunk descriptor
+                writeUTFBytes(view, 0, 'RIFF');
+                view.setUint32(4, 44 + interleaved.length * 2, true);
+                writeUTFBytes(view, 8, 'WAVE');
+                // FMT sub-chunk
+                writeUTFBytes(view, 12, 'fmt ');
+                view.setUint32(16, 16, true); // chunkSize
+                view.setUint16(20, 1, true); // wFormatTag
+                view.setUint16(22, 2, true); // wChannels: stereo (2 channels)
+                view.setUint32(24, sampleRate, true); // dwSamplesPerSec
+                view.setUint32(28, sampleRate * 4, true); // dwAvgBytesPerSec
+                view.setUint16(32, 4, true); // wBlockAlign
+                view.setUint16(34, 16, true); // wBitsPerSample
+                // data sub-chunk
+                writeUTFBytes(view, 36, 'data');
+                view.setUint32(40, interleaved.length * 2, true);
+
+                // write the PCM samples
+                var index = 44;
+                var volume = 1;
+                for (var i = 0; i < interleaved.length; i++) {
+                    view.setInt16(index, interleaved[i] * (0x7FFF * volume), true);
+                    index += 2;
+                }
+
+                // our final blob
+                blob = new Blob([view], { type: 'audio/wav' });
+
+            });
+
+            playButton.addEventListener("click", function () {
+                if (blob == null) {
+                    return;
+                }
+
+                var url = window.URL.createObjectURL(blob);
+                // var audio = new Audio(url);
+                // audio.play();
+                        
+                // testing----------------------------------------
+                // var sound = new Howl({
+                  // src: [url],
+                  // src: [url],
+                  // format: 'wav',
+                  // sprite: {}
+                // });
+
+                // sound.play();
+
+                 // display audio wave-----------------------------
+                wavesurfer1 = WaveSurfer.create({
+                    container: '#waveform1',
+                    waveColor: 'violet',
+                    progressColor: 'purple'
+                });
+
+                wavesurfer2 = WaveSurfer.create({
+                    container: '#waveform2',
+                    waveColor: 'violet',
+                    progressColor: 'purple'
+                });
+
+                wavesurfer1.load(url);
+                wavesurfer2.load(url);
+
+                wavesurfer1.on('ready', function(){
+                    wavesurfer1.play();
+                     const duration = wavesurfer1.getDuration();
+                    $('#duration').text(duration);
+                });
+                wavesurfer2.on('ready', function(){
+                    wavesurfer2.play();
+                    wavesurfer2.setMute(true);
+                });
+            
+
+                 // ctx.drawImage(img, 12, 12, imgWidth, imgHeight);
+                 resizeCanvasContent();
+            });
+
+            downloadButton.addEventListener("click", function () {
+                if (blob == null) {
+                    return;
+                }
+
+                var url = URL.createObjectURL(blob);
+
+                var a = document.createElement("a");
+                document.body.appendChild(a);
+                a.style = "display: none";
+                a.href = url;
+                a.download = "sample.wav";
+                a.click();
+                window.URL.revokeObjectURL(url);
+            });
+
+            function flattenArray(channelBuffer, recordingLength) {
+                var result = new Float32Array(recordingLength);
+                var offset = 0;
+                for (var i = 0; i < channelBuffer.length; i++) {
+                    var buffer = channelBuffer[i];
+                    result.set(buffer, offset);
+                    offset += buffer.length;
+                }
+                return result;
+            }
+
+            function interleave(leftChannel, rightChannel) {
+                var length = leftChannel.length + rightChannel.length;
+                var result = new Float32Array(length);
+
+                var inputIndex = 0;
+
+                for (var index = 0; index < length;) {
+                    result[index++] = leftChannel[inputIndex];
+                    result[index++] = rightChannel[inputIndex];
+                    inputIndex++;
+                }
+                return result;
+            }
+
+            function writeUTFBytes(view, offset, string) {
+                for (var i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            }
+
+            // ////////////////////////////////////////////////////////
+            // =======================================================
+            // //////////////////////////////////////////////////////
+            $('#waveform').on('click', function(e){
+                console.log('clicked waveform?');
+
+                // console.log('current time: ', wavesurfer.getCurrentTime());
+            });
+
+            $('#setEndRangeButton').on('click', function(){
+
+                const currentTime = wavesurfer1.getCurrentTime();
+                console.log('current time: ', currentTime);
+         
+                end = currentTime;                
+            });
+
+            $('#setStartRangeButton').on('click', function(){
+                const currentTime = wavesurfer1.getCurrentTime();
+                console.log('current time: ', currentTime);
+
+                start = currentTime;
+            });
+
+            $('#playWaveform').on('click', function(){
+                wavesurfer1.play(start, end);
+
+                console.log('start, end', start, end);
+            });
+
+            $('#pauseWaveform').on('click', function(){
+                wavesurfer1.pause();
+            });
+
+            $('#checkSizeButton').on('click', function(){
+                const size = blob.size;
+                console.log('size: ', size/1024/1024 + 'MB');
+            });
+
+         
+
+        </script>
+
+    </body>
+</html>

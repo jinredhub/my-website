@@ -115,10 +115,6 @@
             .canvasContainer{
                 position: relative;
                 height: 128px;
-                width: 100%;
-            }
-            #canvasContainer2{
-                width: 200%;
             }
 
         </style>
@@ -161,18 +157,15 @@
 
         <!-- =========================================================== -->
         <!-- bigger waveform-------------------------------------------- -->
-        <div id='useItAsRoo2' style='overflow-x: scroll; overflow-y: hidden;'>
-            <div class='canvasContainer' id='canvasContainer2'>
-                <div id='waveform2'></div>   
-                <canvas class='canvas' id='canvas2' width='400' height=300></canvas>
-            </div>            
+        <div class='canvasContainer'>
+            <div id='waveform2'></div>   
+            <canvas class='canvas' id='canvas1' width='400' height=300></canvas>
         </div>
 
-
         <!-- canvas----------------------------------------------------- -->
-        <div class='canvasContainer' id='canvasContainer1'>
+        <div class='canvasContainer'>
             <div id='waveform1'></div>   
-            <canvas class='canvas' id='canvas1' width='400' height=300></canvas>
+            <canvas class='canvas' id='canvas2' width='400' height=300></canvas>
         </div>
         
 
@@ -221,77 +214,47 @@
             //     ctx.drawImage(img, 12, imgDistFromTop, imgWidth, imgHeight);
             // };
 
-            // var canvas = document.getElementById('canvas1');
-            // var ctx = canvas.getContext('2d');
-            var canva1 = null;
-            var ctx1 = null;
-            var canva2 = null;
-            var ctx2 = null;
+            // var canvas = document.getElementById('canvas');
+            var canvas = document.querySelector('.canvas');
+            var ctx = canvas.getContext('2d');
             // var canvasOffset = $('#canvas').offset();
             // var offsetX = canvasOffset.left;
             // var offsetY = canvasOffset.top;
-            // var rect = canvas.getBoundingClientRect();
-            // var root = document.documentElement;
-            var rect1 = null;
-            var root1 = null;
-            var rect2 = null;
-            var root2 = null;   // use scrollLeft to get el's scrolled distance
-            // console.log('first rect: ', rect);
+            var rect = canvas.getBoundingClientRect();
+            var root = document.documentElement;
+            console.log('first rect: ', rect);
 
-            // var canvasWidth = canvas.width;
-            // var canvasHeight = canvas.height;
-            var canvasWidth1 = null;
-            var canvasHeight1 = null;
-            var canvasWidth2 = null;
-            var canvasHeight2 = null;
-
+            var canvasWidth = canvas.width;
+            var canvasHeight = canvas.height;
             var isDraggingLeftImage = false;
             var isDraggingRightImage = false;
 
             var leftTrimImgX = 0;
-            var rightTrimImgX = 300;
-            /*
-                note:
-                leftTrimImgX for canvas2 is: leftTrimImgX * widthRatio
-                rightTrimImgX for canvas2 is: rightTrimImgX * widthRatio
-            */
+            var rightTrimImgX = 500;
             var mouseX = 0;
-
-            var widthRatio = null;
 
 
             function resizeCanvasContent(){
                 // resize canvs content
-
                 // canvas1----------------------------------------------------------------------------------
                 console.log('resize canvas content');
                 canvas1 = document.getElementById('canvas1');
 
-                console.log('canvas1: ', canvas1);
+                console.log('canvas: ', canvas);
                 ctx1 = canvas1.getContext('2d');
-
-                rect1 = canvas1.getBoundingClientRect();
-                console.log('rect1: ', rect1)
-                root1 = document.documentElement;
-                // console.log('first rect: ', rect1);
                
-                const containerWidth1 = $('#canvasContainer1').innerWidth();
-                const containerHeight1 = $('#canvasContainer1').innerHeight();
-                console.log('w1, h1: ', containerWidth1, containerHeight1);
-                ctx1.canvas.width = containerWidth1;
-                ctx1.canvas.height = containerHeight1;
+                const containerWidth = $('.canvasContainer').innerWidth();
+                const containerHeight = $('.canvasContainer').innerHeight();
+                console.log('w, h: ', containerWidth, containerHeight);
+                ctx1.canvas.width = containerWidth;
+                ctx1.canvas.height = containerHeight;
 
-                canvasWidth1 = canvas1.width;
-                canvasHeight1 = canvas1.height;
+                canvasWidth = canvas1.width;
+                canvasHeight = canvas1.height;
 
-                // initial right image position
-                rightTrimImgX = containerWidth1 - rightTrimImgWidth;
-
-
-                // draw image
-                ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
+                // draw image---------------------------------------------
+                ctx.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                ctx.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
 
                 // canvas2----------------------------------------------------------------------------------
                 console.log('resize canvas content');
@@ -299,33 +262,19 @@
 
                 console.log('canvas: ', canvas2);
                 ctx2 = canvas2.getContext('2d');
-
-                rect2 = canvas2.getBoundingClientRect();
-                console.log('rect2: ', rect2);
-                // root2 = document.documentElement;
-                root2 = document.getElementById('useItAsRoo2');
                
-                const containerWidth2 = $('#canvasContainer2').innerWidth();
-                const containerHeight2 = $('#canvasContainer2').innerHeight();
-                console.log('w, h: ', containerWidth2, containerHeight2);
-                ctx2.canvas.width = containerWidth2;
-                ctx2.canvas.height = containerHeight2;
+                // const containerWidth = $('.canvasContainer').innerWidth();
+                // const containerHeight = $('.canvasContainer').innerHeight();
+                // console.log('w, h: ', containerWidth, containerHeight);
+                ctx2.canvas.width = containerWidth;
+                ctx2.canvas.height = containerHeight;
 
-                canvasWidth2 = canvas2.width;
-                canvasHeight2 = canvas2.height;
+                canvasWidth = canvas2.width;
+                canvasHeight = canvas2.height;
 
-                // calculate width ratio-----------------------
-                widthRatio = containerWidth2 / containerWidth1;
-                console.log('widthRatio: ', widthRatio);
-                console.log('w1, w2: ', containerWidth2, containerWidth1);
-
-                rightTrimImgX2 = containerWidth2 - rightTrimImgWidth;
-
-                // draw image
+                // draw image---------------------------------------------
                 ctx2.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                ctx2.drawImage(rightImg, rightTrimImgX2, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-
+                ctx2.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
 
                 // draw rectangle----------------------
                 // ctx.fillStyle = 'green';
@@ -334,79 +283,32 @@
                 // ctx.globalAlpha = 1.0;
             }
 
-
             function handleMouseDown(e){
                 console.log('handleMouseDown');
-
-                const id = e.target.id;
-                // console.log('id: ', id);
-
-                if(id === 'canvas1'){
-                    console.log('canvas 1, e.clientX:================== ', e.clientX);
-                    // canvas1---------------------------------------------------------------------------------
-                    mouseX = e.clientX - rect1.left;
-                    // console.log('root1.scrollLeft:', root1.scrollLeft);
-                    // set the drag flag
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        isDraggingLeftImage = true;
-                    }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
-                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        isDraggingRightImage = true;
-                    }
+                mouseX = e.clientX - rect.left - root.scrollLeft;
+                // set the drag flag
+                if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                    isDraggingLeftImage = true;
                 }
-                else{
-                    console.log('canvas 2, e.clientX::================== ', (e.clientX + root2.scrollLeft) / widthRatio);
-                    // canvas2---------------------------------------------------------------------------------
-                    mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
-                    // console.log('root2.scrollLeft:', root2.scrollLeft);
-                    // set the drag flag
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        isDraggingLeftImage = true;
-                    }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
-                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        isDraggingRightImage = true;
-                    }
+                else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                    isDraggingRightImage = true;
                 }
-               
             }
 
             function handleMouseUp(e){
                 console.log('handleMouseUp');
+                mouseX = e.clientX - rect.left - root.scrollLeft;
 
-                const id = e.target.id;
-                // console.log('id: ', id);
-                
-                if(id === 'canvas1'){
-                    // canvas1---------------------------------------------------------------------------------
-                    mouseX = e.clientX - rect1.left - root1.scrollLeft;
-
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        isDraggingLeftImage = false;
-                    }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
-                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        isDraggingRightImage = false;
-                    }
+                if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                    isDraggingLeftImage = false;
                 }
-                else{
-                    // canvas2---------------------------------------------------------------------------------
-                    mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
-
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        isDraggingLeftImage = false;
-                    }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
-                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        isDraggingRightImage = false;
-                    }
+                else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                    isDraggingRightImage = false;
                 }
-               
 
                 // offset is the position relative to the document
                 // console.log(canvas.width, canvas.height, offsetX, offsetY);
@@ -418,35 +320,15 @@
 
             function handleMouseOut(e){
                 console.log('handleMouseOut');
+                mouseX = e.clientX - rect.left - root.scrollLeft;
 
-                const id = e.target.id;
-                // console.log('id: ', id);
-
-                if(id === 'canvas1'){
-                    // canvas1---------------------------------------------------------------------------------
-                    mouseX = e.clientX - rect1.left - root1.scrollLeft;
-
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        isDraggingLeftImage = false;
-                    }
-                    if(checkMousePositionIfInsideImage(mouseX) === 'right'){
-                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        isDraggingRightImage = false;
-                    }
+                if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    leftTrimImgX = mouseX - leftTrimImgWidth/2;
+                    isDraggingLeftImage = false;
                 }
-                else{
-                    // canvas1---------------------------------------------------------------------------------
-                    mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
-
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        isDraggingLeftImage = false;
-                    }
-                    if(checkMousePositionIfInsideImage(mouseX) === 'right'){
-                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        isDraggingRightImage = false;
-                    }
+                if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                    isDraggingRightImage = false;
                 }
 
                 // user has left the canvas, so clear the drag flag
@@ -462,120 +344,48 @@
                 // console.log('L and R imgX: ', leftTrimImgX, rightTrimImgX);
 
                 // if the drag flag is set, clear the canvas and draw the image
-
-                const id = e.target.id;
-                // console.log('id: ', id);
-
-                if(id === 'canvas1'){
-                    // canvas1---------------------------------------------------------------------------------
-                    if(isDraggingLeftImage){
-                        if(leftTrimImgX > rightTrimImgX){
-                            // console.log('left over right===========================');
-                            leftTrimImgX = rightTrimImgX - rightTrimImgWidth;
-                            isDraggingLeftImage = false;
-                        }
-                        else{
-                            // console.log('left is not over right');
-                            mouseX = e.clientX - rect1.left - root1.scrollLeft;
-                            leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        }
-
-                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
-                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
-                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        // display value
-                        $('#startRangeNumb').text(leftTrimImgX);
-                    
-                       
+                if(isDraggingLeftImage){
+                    if(leftTrimImgX > rightTrimImgX){
+                        console.log('left over right===========================');
+                        leftTrimImgX = rightTrimImgX - rightTrimImgWidth;
+                        isDraggingLeftImage = false;
                     }
-                    if(isDraggingRightImage){
-                        if(leftTrimImgX > rightTrimImgX){
-                            rightTrimImgX = leftTrimImgX + leftTrimImgWidth;
-                            isDraggingRightImage = false;
-                        }
-                        else{
-                            mouseX = e.clientX - rect1.left - root1.scrollLeft;
-                            rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        }
-
-                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
-                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
-                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        // display value
-                        $('#endRangeNumb').text(rightTrimImgX);
+                    else{
+                        // console.log('left is not over right');
+                        mouseX = e.clientX - rect.left - root.scrollLeft;
+                        leftTrimImgX = mouseX - leftTrimImgWidth/2;
                     }
-                }
-                else{
-                    // canvas2---------------------------------------------------------------------------------
-                    if(isDraggingLeftImage){
-                        if(leftTrimImgX > rightTrimImgX){
-                            // console.log('left over right===========================');
-                            leftTrimImgX = rightTrimImgX - rightTrimImgWidth;
-                            isDraggingLeftImage = false;
-                        }
-                        else{
-                            // console.log('left is not over right');
-                            mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
-                            leftTrimImgX = mouseX - leftTrimImgWidth/2;
-                        }
 
-                    //     mouseX = (e.clientX + root2.scrollLeft) / widthRatio - rect2.left;
+                    ctx.clearRect(0,0, canvasWidth, canvasHeight);
+                    ctx.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                    ctx.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
 
-                    // if(checkMousePositionIfInsideImage(mouseX) === 'left'){
-                    //     leftTrimImgX = mouseX - leftTrimImgWidth/2;
-
-                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
-                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
-                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        // display value
-                        $('#startRangeNumb').text(leftTrimImgX);
-                    
-                       
-                    }
-                    if(isDraggingRightImage){
-                        if(leftTrimImgX > rightTrimImgX){
-                            rightTrimImgX = leftTrimImgX + leftTrimImgWidth;
-                            isDraggingRightImage = false;
-                        }
-                        else{
-                            mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
-                            rightTrimImgX = mouseX - rightTrimImgWidth/2;
-                        }
-
-                        ctx1.clearRect(0,0, canvasWidth1, canvasHeight1);
-                        ctx1.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx1.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        ctx2.clearRect(0,0, canvasWidth2, canvasHeight2);
-                        ctx2.drawImage(leftImg, leftTrimImgX * widthRatio, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
-                        ctx2.drawImage(rightImg, rightTrimImgX * widthRatio, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
-
-                        // display value
-                        $('#endRangeNumb').text(rightTrimImgX);
-                    }
-                }
-
+                    // display value
+                    $('#startRangeNumb').text(leftTrimImgX);
                 
+                   
+                }
+                if(isDraggingRightImage){
+                    if(leftTrimImgX > rightTrimImgX){
+                        rightTrimImgX = leftTrimImgX + leftTrimImgWidth;
+                        isDraggingRightImage = false;
+                    }
+                    else{
+                        mouseX = e.clientX - rect.left - root.scrollLeft;
+                        rightTrimImgX = mouseX - rightTrimImgWidth/2;
+                    }
+
+                    ctx.clearRect(0,0, canvasWidth, canvasHeight);
+                    ctx.drawImage(leftImg, leftTrimImgX, imgDistFromTop, leftTrimImgWidth, leftTrimImgHeight);
+                    ctx.drawImage(rightImg, rightTrimImgX, imgDistFromTop, rightTrimImgWidth, rightTrimImgHeight);
+
+                    // display value
+                    $('#endRangeNumb').text(rightTrimImgX);
+                }
             }
 
             function checkMousePositionIfInsideImage(mouseXposition){
                 console.log('checkMousePositionIfInsideImage');
-                console.log('mouseXposition: ', mouseXposition);
                 // var imgTopEdgeY = imgDistFromTop;
                 // var imgBottomEdgeY = imgDistFromTop + imgHeight;
                 var leftImgLeftEdgeX = leftTrimImgX;
@@ -584,9 +394,9 @@
                 var rightImgLeftEdgeX = rightTrimImgX;
                 var rightImgRightEdgeX = rightTrimImgX + rightTrimImgWidth;
 
-                // console.log('leftTrimImgX left, right:', leftImgLeftEdgeX, leftImgRightEdgeX);
-                // console.log('rightTrimImgX left, right:', rightImgLeftEdgeX, rightImgRightEdgeX);                
-                // console.log('mouseXposition: ', mouseXposition);
+                console.log('leftTrimImgX left, right:', leftImgLeftEdgeX, leftImgRightEdgeX);
+                console.log('rightTrimImgX left, right:', rightImgLeftEdgeX, rightImgRightEdgeX);                
+                console.log('mouseXposition: ', mouseXposition);
 
                 if(mouseXposition > leftImgLeftEdgeX && mouseXposition < leftImgRightEdgeX){
                     console.log('mouse inside left img: ', true);
@@ -602,15 +412,10 @@
                 }
             }
 
-            // $('.canvas').mousedown(function(e){handleMouseDown(e)});
-            // $('.canvas').mousemove(function(e){handleMouseMove(e)});
-            // $('.canvas').mouseup(function(e){handleMouseUp(e)});
-            // $('.canvas').mouseout(function(e){handleMouseOut(e)});
-
-            $('.canvas').on('mousedown touchstart', function(e){handleMouseDown(e)});
-            $('.canvas').on('mousemove touchmove', function(e){handleMouseMove(e)});
-            $('.canvas').on('mouseup touchend', function(e){handleMouseUp(e)});
-            $('.canvas').on('mouseout', function(e){handleMouseOut(e)});
+            $('.canvas').mousedown(function(e){handleMouseDown(e)});
+            $('.canvas').mousemove(function(e){handleMouseMove(e)});
+            $('.canvas').mouseup(function(e){handleMouseUp(e)});
+            $('.canvas').mouseout(function(e){handleMouseOut(e)});
 
 
             // recording===============================================

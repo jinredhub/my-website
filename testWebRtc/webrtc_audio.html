@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="keywords" content="music, ai, diagnostics">
+        <meta name="description" content="Learning music is hard, personal and expensive. Kena is an AI-based music practice destination helping you through every step of your journey.">       
+        <title>Kena.AI</title>
+
+
+     
+    </head>
+    <body>
+        <button id='recordButton' type='button'>start</button>
+
+        <button id='stopButton' type='button'>stop</button>
+
+        <audio id='myAudio' controls></audio>
+
+
+
+        <!-- jquery -->
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+
+        <script>
+          $(document).ready(function(){
+            console.log('hi');
+
+            // ref: https://mozdevs.github.io/MediaRecorder-examples/record-live-audio.html
+
+            let mediaRecorder = '';
+            let recordButton = document.getElementById('recordButton');
+            let stopButton = document.getElementById('stopButton');
+            
+            const constraintObj = {
+                audio: true,
+            }
+
+            // get audio stream from user's mic
+            navigator.mediaDevices.getUserMedia(constraintObj)
+            .then(function(stream){
+                recordButton.disabled = false;
+                recordButton.addEventListener('click', startRecording);
+                stopButton.addEventListener('click', stopRecording);
+                mediaRecorder = new MediaRecorder(stream);
+
+                // listen to dataavailable which gets triggered whenever we have an audio blob available
+                mediaRecorder.addEventListener('dataavailable', onRecordingReady);
+            })
+            .catch(function(err){
+                // user didn't allow it
+                console.log(err.name, err.message);
+            });
+
+            function startRecording(){
+                recordButton.disabled = true;
+                stopButton.disabled = false;
+
+                mediaRecorder.start();
+            }
+
+            function stopRecording(){
+                recordButton.disabled = false;
+                stopButton.disabled = true;
+
+                // stopping the recorder will trigger the 'dataavailable' event
+                mediaRecorder.stop();
+            }
+
+            function onRecordingReady(e){
+                const audio = document.getElementById('myAudio');
+                // e.data contains the audio data
+                audio.src = URL.createObjectURL(e.data);
+                audio.play();
+            }
+
+
+
+
+          })
+           
+        </script>
+
+    </body>
+</html>
