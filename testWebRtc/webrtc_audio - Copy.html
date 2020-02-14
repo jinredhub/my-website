@@ -10,7 +10,7 @@
 
         <style>
             body{
-                background-color: gray;
+                /*background-color: gray;*/
             }
             #waveform1, #waveform2{
                 border: 1px solid black;
@@ -119,9 +119,19 @@
                 position: relative;
                 height: 128px;
                 width: 100%;
+                top: 0;
+                left: 0;
             }
             #canvasContainer2{
                 width: 200%;
+            }
+            .overlay{
+                z-index: 3;
+                position: absolute;
+                top:0; 
+                left:0; 
+                width: 100%;
+                height: 100%;
             }
 
         </style>
@@ -166,6 +176,7 @@
         <!-- bigger waveform-------------------------------------------- -->
         <div id='useItAsRoo2' style='overflow-x: scroll; overflow-y: hidden;'>
             <div class='canvasContainer' id='canvasContainer2'>
+                <!-- <div class='overlay'></div> -->
                 <div id='waveform2'></div>   
                 <canvas class='canvas' id='canvas2' width='400' height=300></canvas>
             </div>            
@@ -174,6 +185,7 @@
 
         <!-- canvas----------------------------------------------------- -->
         <div class='canvasContainer' id='canvasContainer1'>
+            <!-- <div class='overlay'></div> -->
             <div id='waveform1'></div>   
             <canvas class='canvas' id='canvas1' width='400' height=300></canvas>
         </div>
@@ -350,11 +362,11 @@
                     mouseX = e.clientX - rect1.left;
                     // console.log('root1.scrollLeft:', root1.scrollLeft);
                     // set the drag flag
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseDown') === 'left'){
                         leftTrimImgX = mouseX - leftTrimImgWidth/2;
                         isDraggingLeftImage = true;
                     }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    else if(checkMousePositionIfInsideImage(mouseX, 'mouseDown') === 'right'){
                         rightTrimImgX = mouseX - rightTrimImgWidth/2;
                         isDraggingRightImage = true;
                     }
@@ -365,11 +377,11 @@
                     mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
                     // console.log('root2.scrollLeft:', root2.scrollLeft);
                     // set the drag flag
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseDown') === 'left'){
                         leftTrimImgX = mouseX - leftTrimImgWidth/2;
                         isDraggingLeftImage = true;
                     }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    else if(checkMousePositionIfInsideImage(mouseX, 'mouseDown') === 'right'){
                         rightTrimImgX = mouseX - rightTrimImgWidth/2;
                         isDraggingRightImage = true;
                     }
@@ -387,11 +399,11 @@
                     // canvas1---------------------------------------------------------------------------------
                     mouseX = e.clientX - rect1.left - root1.scrollLeft;
 
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseUp') === 'left'){
                         leftTrimImgX = mouseX - leftTrimImgWidth/2;
                         isDraggingLeftImage = false;
                     }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    else if(checkMousePositionIfInsideImage(mouseX, 'mouseUp') === 'right'){
                         rightTrimImgX = mouseX - rightTrimImgWidth/2;
                         isDraggingRightImage = false;
                     }
@@ -400,11 +412,11 @@
                     // canvas2---------------------------------------------------------------------------------
                     mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
 
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseUp') === 'left'){
                         leftTrimImgX = mouseX - leftTrimImgWidth/2;
                         isDraggingLeftImage = false;
                     }
-                    else if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    else if(checkMousePositionIfInsideImage(mouseX, 'mouseUp') === 'right'){
                         rightTrimImgX = mouseX - rightTrimImgWidth/2;
                         isDraggingRightImage = false;
                     }
@@ -429,11 +441,11 @@
                     // canvas1---------------------------------------------------------------------------------
                     mouseX = e.clientX - rect1.left - root1.scrollLeft;
 
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseOut') === 'left'){
                         leftTrimImgX = mouseX - leftTrimImgWidth/2;
                         isDraggingLeftImage = false;
                     }
-                    if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseOut') === 'right'){
                         rightTrimImgX = mouseX - rightTrimImgWidth/2;
                         isDraggingRightImage = false;
                     }
@@ -442,11 +454,11 @@
                     // canvas1---------------------------------------------------------------------------------
                     mouseX = (e.clientX - rect2.left + root2.scrollLeft) / widthRatio;
 
-                    if(checkMousePositionIfInsideImage(mouseX) === 'left'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseOut') === 'left'){
                         leftTrimImgX = mouseX - leftTrimImgWidth/2;
                         isDraggingLeftImage = false;
                     }
-                    if(checkMousePositionIfInsideImage(mouseX) === 'right'){
+                    if(checkMousePositionIfInsideImage(mouseX, 'mouseOut') === 'right'){
                         rightTrimImgX = mouseX - rightTrimImgWidth/2;
                         isDraggingRightImage = false;
                     }
@@ -460,9 +472,9 @@
 
             function handleMouseMove(e){
                 console.log('handleMouseMove');
-                // console.log('isDraggingLeftImage: ', isDraggingLeftImage);
-                // console.log('isDraggingRightImage: ', isDraggingRightImage);
-                // console.log('L and R imgX: ', leftTrimImgX, rightTrimImgX);
+                console.log('isDraggingLeftImage: ', isDraggingLeftImage);
+                console.log('isDraggingRightImage: ', isDraggingRightImage);
+                console.log('L and R imgX: ', leftTrimImgX, rightTrimImgX);
 
                 // if the drag flag is set, clear the canvas and draw the image
 
@@ -576,9 +588,12 @@
                 
             }
 
-            function checkMousePositionIfInsideImage(mouseXposition){
+            function checkMousePositionIfInsideImage(mouseXposition, eventName){
                 console.log('checkMousePositionIfInsideImage');
                 console.log('mouseXposition: ', mouseXposition);
+                console.log('eventName: ', eventName);
+
+
                 // var imgTopEdgeY = imgDistFromTop;
                 // var imgBottomEdgeY = imgDistFromTop + imgHeight;
                 var leftImgLeftEdgeX = leftTrimImgX;
@@ -587,8 +602,8 @@
                 var rightImgLeftEdgeX = rightTrimImgX;
                 var rightImgRightEdgeX = rightTrimImgX + rightTrimImgWidth;
 
-                // console.log('leftTrimImgX left, right:', leftImgLeftEdgeX, leftImgRightEdgeX);
-                // console.log('rightTrimImgX left, right:', rightImgLeftEdgeX, rightImgRightEdgeX);                
+                console.log('leftTrimImgX left, right:', leftImgLeftEdgeX, leftImgRightEdgeX);
+                console.log('rightTrimImgX left, right:', rightImgLeftEdgeX, rightImgRightEdgeX);                
                 // console.log('mouseXposition: ', mouseXposition);
 
                 if(mouseXposition > leftImgLeftEdgeX && mouseXposition < leftImgRightEdgeX){
@@ -605,15 +620,90 @@
                 }
             }
 
-            // $('.canvas').mousedown(function(e){handleMouseDown(e)});
-            // $('.canvas').mousemove(function(e){handleMouseMove(e)});
-            // $('.canvas').mouseup(function(e){handleMouseUp(e)});
-            // $('.canvas').mouseout(function(e){handleMouseOut(e)});
+            $('.canvas').mousedown(function(e){handleMouseDown(e)});
+            $('.canvas').mousemove(function(e){handleMouseMove(e)});
+            $('.canvas').mouseup(function(e){handleMouseUp(e)});
+            $('.canvas').mouseout(function(e){handleMouseOut(e)});
 
-            $('.canvas').on('mousedown touchstart', function(e){handleMouseDown(e)});
-            $('.canvas').on('mousemove touchmove', function(e){handleMouseMove(e)});
-            $('.canvas').on('mouseup touchend', function(e){handleMouseUp(e)});
-            $('.canvas').on('mouseout', function(e){handleMouseOut(e)});
+            // $('.canvas').on('mousedown touchstart', function(e){handleMouseDown(e)});
+            // $('.canvas').on('mousemove touchmove', function(e){handleMouseMove(e)});
+            // $('.canvas').on('mouseup touchend', function(e){handleMouseUp(e)});
+            // $('.canvas').on('mouseout', function(e){handleMouseOut(e)});
+
+
+            let touchClientX = null;
+            let touchClientY = null;
+
+            // set up touch events for mobile
+            canvas1.addEventListener('touchstart', function(e){
+                console.log('e touchstart================================: ', e);
+                touchPos = getTouchPos(canvas1, e);
+                console.log('touchPos touchstart: ', touchPos);
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent('mousedown', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+
+                console.log('start ev: x, y: ', mouseEvent);
+
+                canvas1.dispatchEvent(mouseEvent);
+
+            });
+
+            canvas1.addEventListener('touchend', function(e){
+                console.log('e touchend, nai=============================: ', e);
+                // need to store values on touchmove and read it in touchend
+
+                // var mouseEvent = new MouseEvent('mouseup', {});
+                // canvas1.dispatchEvent(mouseEvent);
+
+                var mouseEvent = new MouseEvent('mouseup', {
+                    clientX: touchClientX,
+                    clientY: touchClientY
+                });
+
+                console.log('end ev: x, y: ', mouseEvent);
+
+                canvas1.dispatchEvent(mouseEvent);
+
+            });
+
+            canvas1.addEventListener('touchmove', function(e){
+
+                console.log('e touchmove, aru===========================: ', e);
+
+                var touch = e.touches[0];
+                var mouseEvent = new MouseEvent('mousemove', {
+                    clientX: touch.clientX,
+                    clientY: touch.clientY
+                });
+
+                // 
+                touchClientY = touch.clientY;
+                touchClientX = touch.clientX;
+
+                console.log('move ev: x, y: ', mouseEvent);
+
+                canvas1.dispatchEvent(mouseEvent);
+
+            });
+
+            // get the position of a touch relative to the canvas
+            function getTouchPos(canvasDom, touchEvent){
+                var rect = canvasDom.getBoundingClientRect();
+                return {
+                    x: touchEvent.touches[0].clientX - rect.left,
+                    // e.clientX - rect1.left - root1.scrollLeft;
+
+                    y: touchEvent.touches[0].clientY - rect.top
+                };
+            }
+
+            // $('body').on('touchstart', function(){
+            //     alert('you touchstart');
+            // })
+
 
 
             // recording===============================================
