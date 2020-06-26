@@ -6,8 +6,8 @@ $(document).ready(function(){
     $('.visitVroomButton').on('click', function(){
         window.location.href = "https://vrooms.github.io/entrance/";
     });
-    $('.visitInstaAPIButton').on('click', function(){
-        window.location.href = "https://the-generators.github.io/whereAreMyFriends/";
+    $('.visitArpeggiosButton').on('click', function(){
+        window.location.href = "https://jinredhub.github.io/arpeggios/";
     });
 
     $('.linkedin').on('click', function(){
