@@ -1,21 +1,5 @@
 $(document).ready(function(){
 
-    $('.visitPinterestButton').on('click', function(){
-        window.location.href = "https://sprung-pinterest.herokuapp.com/";
-    });
-    $('.visitVroomButton').on('click', function(){
-        window.location.href = "https://vrooms.github.io/entrance/";
-    });
-    $('.visitArpeggiosButton').on('click', function(){
-        window.location.href = "https://jinredhub.github.io/arpeggios/";
-    });
-
-    $('.linkedin').on('click', function(){
-        window.location.href = "http://www.linkedin.com/in/jin-redmond";
-    });
-    $('.github').on('click', function(){
-        window.location.href = "http://github.com/jinredhub";
-    })
 
     // smooth scrolling
     $('a[href^="#"]').on("click", function(event){
