@@ -940,8 +940,8 @@ nav {
   font-size: 16px;
 }
 .work:hover .btn {
-  color: #0d7260;
-  background-color: #def5f0;
+  color: white;
+  background-color: #0d7260;
 }
 body.modalOpen {
   overflow: hidden;

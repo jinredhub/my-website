@@ -157,7 +157,7 @@ $(document).ready(function () {
     // update info
     $(".workModalTitle").text(workData[nameOfWork].companyName);
     $(".workModalDescription").text(workData[nameOfWork].description);
-    $(".btn-green").attr("href", workData[nameOfWork].link);
+    $(".workModalContent .btn-green").attr("href", workData[nameOfWork].link);
 
     const buttons = `
             <a class='prev'>&#10094;</a>
