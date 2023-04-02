@@ -1142,3 +1142,30 @@ footer .github:active {
     font-size: 26px;
   }
 }
+
+/*media query----------------------------------------*/
+/*tablets*/
+@media (max-width: 768px) {
+  .hide-tablet {
+    display: none !important;
+  }
+  .show-tablet {
+    display: block !important;
+  }
+  .show-tablet-flex {
+    display: flex !important;
+  }
+}
+/*before gets to smartphones*/
+@media (max-width: 590px) {
+  .hide-mobile {
+    display: none !important;
+  }
+  .show-mobile {
+    display: block !important;
+  }
+  .show-mobile-flex {
+    display: flex !important;
+  }
+}
+/*end media query------------------------------------*/
