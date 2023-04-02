@@ -965,7 +965,6 @@ body.modalOpen {
   width: 90%;
   max-width: 700px;
   margin: 0 auto;
-  aspect-ratio: 3/2;
   border: 1px solid white;
   background-color: white;
   padding: 60px 20px 20px 20px;
@@ -997,6 +996,7 @@ body.modalOpen {
   background-color: white;
   width: 100%;
   border: 2px solid #d3d3d3;
+  aspect-ratio: 16/9;
 }
 .slide {
   position: absolute;
