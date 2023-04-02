@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="keywords" content="web, web design, web development, developer, freelance, freelancer, front-end, job, Jin Redmond, San Francisco, bay area, WEBデザイン,　ディレクション, Webサイト作成、　ウェブサイト、　作成">
-        <meta name="description" content="Multifunctional designer/fontend developer based in San Francisco">
-        <title>Jin - Web Developer</title>
-        <!-- favicon -->
-		<link rel="shortcut icon" href="./images/favicon.ico">
-        <!-- google fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-		<!-- font awesome -->
-		<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-        <!-- normalize -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-        <!-- css -->
-		<link rel="stylesheet" type="text/css" href="css/animate.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="keywords"
+      content="web, web design, web development, developer, freelance, freelancer, front-end, job, Jin Redmond, San Francisco, bay area, WEBデザイン,　ディレクション, Webサイト作成、　ウェブサイト、　作成"
+    />
+    <meta
+      name="description"
+      content="Multifunctional designer/fontend developer based in San Francisco"
+    />
+    <title>Jin - Web Developer</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./images/favicon.ico" />
+    <!-- google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+    />
+    <!-- font awesome -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"
+    ></script>
+    <!-- normalize -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-		<!-- google analytics -->
-		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126824002-1"></script>
+    <!-- google analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126824002-1"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
@@ -27,182 +45,339 @@
 
 		  gtag('config', 'UA-126824002-1');
 		</script>		 -->
+  </head>
+  <body>
+    <header class="disp-flex justify-content--center align-items--center">
+      <nav>
+        <!-- desktop nav menu -->
+        <div
+          class="nav desktopNavContainer disp-flex align-items--center hide-tablet justify-content--center"
+        >
+          <a href="#myWorks">Work</a>
+          <a href="#sideProjects">Side Projects</a>
+          <a href="./images/jin-redmond-resume.pdf">Resume</a>
+        </div>
 
-    </head>
-    <body>
+        <!-- mobile nav menu -->
+        <div
+          class="nav mobileNavContainer disp-flex align-items--center show-tablet-flex justify-content--end"
+        >
+          <div class="myLinks">
+            <a href="#aboutHash">About</a>
+            <a href="#menuHash">Menu</a>
+            <a href="#cateringHash">Catering</a>
+          </div>
+          <a
+            href="javascript:void(0);"
+            class="hamburgerIcon"
+            aria-label="click to open mobile navigation menu"
+          >
+            <i class="fas fa-bars"></i>
+          </a>
+        </div>
+      </nav>
 
-        <!-- title section -->
-    	<header class='disp-flex justify-content--center align-items--center flex-dir-col'>
-                <h1 class="text-align-center">Web Developer</h1>
-                <p>
-                    <a class='btn btn-green' href="mailto:jin@nieblo.com">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                        Email
-                    </a>
-                </p>
-                <p>
-                    <a href="./images/Jin Redmond - Resume.pdf">view my resume <i class="fas fa-user-circle"></i></a>
-                </p>
-                <p>
-                    <a href="#myWork">check out my side projects
-                         <i class="fa fa-chevron-circle-down" aria-hidden="true"></i></a>
-                </p>
-    	</header>
+      <!-- title -->
+      <div
+        class="disp-flex justify-content--center align-items--center flex-dir-col"
+      >
+        <h1><span class="myname">Jin Redmond</span><br />Web Developer</h1>
+        <!-- <p>
+            <a class='btn btn-green' href="mailto:jin@nieblo.com">
+                Contace me
+            </a>
+        </p> -->
+      </div>
+    </header>
 
-        <main>
-            <!-- job detail section -->
-            <section id='jobDetail'>
-                <div class="padding50"></div>
-                <h1 hidden>job details</h1>
-                <div class="disp-flex">
-                    <div class="flex-33 text-align-center padding-2">
-                        <img src="./images/icon1.png" alt="thumbnail of responsive website">
-                        <h2>Responsive Web</h2>
-                        <p>Design your website to look great on a variety of devices. Desktops, Tablets and phones. Grow your business and platform to take advantage across all devices.</p>
-                    </div>
-                    <div class="flex-33 text-align-center padding-2">
-                        <img src="./images/icon2.png" alt="thumbnail of ideas">
-                        <h2>Ideas Realized</h2>
-                        <p>In order to design well structured websites I collaborate with clients to transform ideas into design. I sketch and wireframe interfaces and iterate to reach intuitive designs.</p>
-                    </div>
-                    <div class="flex-33 text-align-center padding-2">
-                        <img src="./images/icon3.png" alt="thumbnail of code">
-                        <h2>Website Coding</h2>
-                        <p>I build websites with HTML5, CSS3 and Javascript. I also work with frameworks such as Bootstrap, jQuery and React where appropriate, as well as backend frameworks like Node.js, and databases such as MySQL.</p>
-                    </div>
-                </div>
-                <div class="padding50"></div>
-            </section>
-            
-            <!-- portfolio section -->
-            <div class='portfolioSectionContainer'>
-                <section class="portfolioSection">
-            
-                    <div class="padding50"></div>
-                    <h1 class='text-align-center wow fadeIn' id="myWork">SIDE PROJECTS</h1>
+    <main>
+      <!-- work modal with slide -->
+      <div class="workModal">
+        <div class="workModalContent">
+          <button type="button" class="closeWorkModal">&#10006;</button>
+          <div id="slides">
+            <div class="slide showing"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
 
-                    <div class="disp-flex">
-                        <div class="flex-50 padding-2 wow fadeInLeft">
-                            <a href="https://election-map.up.railway.app/">
-                                <img class="lazyload" data-src="./images/portfolio_election-map.png" alt="thumbnail election map website">                            
-                            </a>
-                        </div>
-                        <div class="flex-50 padding-2 wow fadeInRight">
-                            <h2>Election Map</h2>
-                            <p>2020 Presidential Election Results.<br>Hover over the map for details.</p>
-                            <a class='btn btn-green' href="https://election-map.up.railway.app/">visit website</a>
-                        </div>
-                    </div>
-                    
-                    <div class="padding50"></div>
-                    <div class="padding50"></div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+          </div>
+          <h2 class="workModalTitle">title</h2>
+          <div class="workModalDescription">desc</div>
+          <a class="btn btn-green" href="">view website</a>
+        </div>
+      </div>
 
-                    <div class="disp-flex">
-                        <div class="flex-50 padding-2 wow fadeInLeft">
-                            <a href="https://jinredhub.github.io/us-map-covid-19/">
-                                <img class="lazyload" data-src="./images/portfolio_covid-map.png" alt="thumbnail us covid map website">
-                            </a>
-                        </div>
-                        <div class="flex-50 padding-2 wow fadeInRight">
-                            <h2>Coronavirus (COVID-19) Map</h2>
-                            <p>Coronavirus (COVID-19) in the U.S. map and case count. Hover over a county to see how many confired cases and deaths there are across the country.</p>
-                            <a class='btn btn-green' href="https://jinredhub.github.io/us-map-covid-19/">visit website</a>
-                        </div>
-                    </div>
-                    
-                    <div class="padding50"></div>
-                    <div class="padding50"></div>
+      <!-- my works section -->
+      <div class="workSectionContainer">
+        <section class="workSection">
+          <div class="padding50"></div>
+          <h2 class="text-align-center wow fadeIn" id="myWorks">MY WORKS</h2>
 
-                    <div class="disp-flex">
-                        <div class="flex-50 padding-2 wow fadeInLeft">
-                            <a href="https://jinredhub.github.io/daw/">
-                                <img class="lazyload" data-src="./images/portfolio_daw.png" alt="thumbnail of digital audio workstation website">
-                            </a>
-                        </div>
-                        <div class="flex-50 padding-2 wow fadeInRight">
-                            <h2>DAW</h2>
-                            <p>Easy to use Digital Audio Workstation that runs in your browser. Upload your audio files, mix them together, export in a single audio file.</p>
-                            <a class='btn btn-green' href="https://jinredhub.github.io/daw/">visit website</a>
-                        </div>
-                    </div>
-                    
-                    <div class="padding50"></div>
-                    <div class="padding50"></div>                    
+          <div class="workContainer">
+            <button type="button" class="work" data-company="zoom">
+              <img
+                src="./images/work/zoom_cover.jpg"
+                alt="Zoom"
+                loading="lazy"
+              />
+              <h3>Zoom</h3>
+              <p>Optimizely / Storybook / SCSS</p>
+              <div class="workBtnContainer">
+                <div class="btn btn-link-green learnMoreWork">Learn more</div>
+              </div>
+            </button>
 
-                    <div class="disp-flex">
-                        <div class="flex-50 padding-2 wow fadeInLeft">
-                            <a href="https://jinredhub.github.io/arpeggios/">
-                                <img class="lazyload" data-src="./images/portfolio_arpeggios.png" alt="thumbnail of pinit website">
-                            </a>
-                        </div>
-                        <div class="flex-50 padding-2 wow fadeInRight">
-                            <h2>Arpeggios</h2>
-                            <p>An arpeggio is a chord played one note at a time. This experiment lets you play arpeggios in different patterns. Tap the wheel to explore major and minor chords.</p>
-                            <a class='btn btn-green' href="https://jinredhub.github.io/arpeggios/">visit website</a>
+            <button type="button" class="work" data-company="twitter">
+              <img
+                src="./images/work/twitter_cover.png"
+                alt="Twitter"
+                loading="lazy"
+              />
+              <h3>Twitter</h3>
+              <p>AEM / React / SCSS</p>
+              <div class="workBtnContainer">
+                <div class="btn btn-link-green learnMoreWork">Learn more</div>
+              </div>
+            </button>
 
-                        </div>
-                    </div>
-                    
-                    <div class="padding50"></div>
-                    <div class="padding50"></div>
-    
-                    <div class="disp-flex">
-                        <div class="flex-50 padding-2 wow fadeInLeft">
-                            <a href="https://vrooms.github.io/entrance/">
-                                <img class="lazyload" data-src="./images/portfolio_vrooms.png" alt="thumbnail of vr-webapp">
-                            </a>
-                        </div>
-                        <div class="flex-50 padding-2 wow fadeInRight">
-                            <h2>Vrooms</h2>
-                            <p>This app allows you to place furniture of your choice into a room, and fit them to the exact measurements of your room. You can then view the resulting room in a 360 degree virtual reality environment.</p>
-                            <a class='btn btn-green' href="https://vrooms.github.io/entrance/">visit website</a>
-                        </div>
-                    </div>
-    
-                    <div class="padding50"></div>
-                    <div class="padding50"></div>
+            <button type="button" class="work" data-company="lucid">
+              <img
+                src="./images/work/lucid_cover.png"
+                alt="Lucid Motors"
+                loading="lazy"
+              />
+              <h3>Lucid Motors</h3>
+              <p>React / Redux / Gatsby</p>
+              <div class="workBtnContainer">
+                <div class="btn btn-link-green learnMoreWork">Learn more</div>
+              </div>
+            </button>
 
-                    <div class="disp-flex">
-                        <div class="flex-50 padding-2 wow fadeInLeft">
-                            <a href="https://pinterest.up.railway.app/">
-                                <img class="lazyload" data-src="./images/portfolio_pinit.png" alt="thumbnail of pinit website">
-                            </a>
-                        </div>
-                        <div class="flex-50 padding-2 wow fadeInRight">
-                            <h2>PinIt</h2>
-                            <p>On this webapp, you are able to save Pins similar when you using Pinterest. Please create your account to use this site.</p>
-                            <a class='btn btn-green' href="https://pinterest.up.railway.app/">visit website</a>
-                        </div>
-                    </div>
-                    
-                    <div class="padding50"></div>
-                    <div class="padding50"></div>
+            <button type="button" class="work" data-company="gelesis">
+              <img
+                src="./images/work/gelesis_cover.jpg"
+                alt="Gelesis"
+                loading="lazy"
+              />
+              <h3>Gelesis</h3>
+              <p>React / TypeScript / SCSS</p>
+              <div class="workBtnContainer">
+                <div class="btn btn-link-green learnMoreWork">Learn more</div>
+              </div>
+            </button>
+          </div>
 
-                </section>
+          <div class="padding50"></div>
+          <div class="padding50"></div>
+        </section>
+      </div>
+
+      <!-- side project section -->
+      <div class="portfolioSectionContainer">
+        <section class="portfolioSection">
+          <div class="padding50"></div>
+          <h2 class="text-align-center wow fadeIn" id="sideProjects">
+            SIDE PROJECTS
+          </h2>
+
+          <div class="disp-flex">
+            <div class="flex-50 padding-2 wow fadeInLeft">
+              <a href="https://election-map.up.railway.app/">
+                <img
+                  class="lazyload"
+                  data-src="./images/portfolio_election-map.png"
+                  alt="thumbnail election map website"
+                />
+              </a>
             </div>
-            
-        </main>
-
-		<!-- footer -->
-		<footer class='disp-flex justify-content--center align-items--center flex-dir-col'>
-            <div class='padding-bottom-2'>
-                <a class='btn linkedin' href="http://www.linkedin.com/in/jin-redmond" aria-label="click to go to my linkedIn page"><i class="fab fa-linkedin-in"></i></a>
-                <a class='btn github' href="http://github.com/jinredhub" aria-label="click to go to my github page"><i class="fab fa-github-alt"></i></a>
+            <div class="flex-50 padding-2 wow fadeInRight">
+              <h3>Election Map</h3>
+              <p>
+                2020 Presidential Election Results.<br />Hover over the map for
+                details.
+              </p>
+              <a
+                class="btn btn-green"
+                href="https://election-map.up.railway.app/"
+                >visit website</a
+              >
             </div>
-            <p>Copyright <i class="fas fa-copyright"></i> 2020 Jin Redmond</p>
-		</footer>
+          </div>
 
-        <!-- lazysizes -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js"></script>
+          <div class="padding50"></div>
+          <div class="padding50"></div>
 
-        <!-- jquery -->
-        <script
-        src="https://code.jquery.com/jquery-3.4.0.min.js"
-        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
-        crossorigin="anonymous"></script>
+          <div class="disp-flex">
+            <div class="flex-50 padding-2 wow fadeInLeft">
+              <a href="https://jinredhub.github.io/us-map-covid-19/">
+                <img
+                  class="lazyload"
+                  data-src="./images/portfolio_covid-map.png"
+                  alt="thumbnail us covid map website"
+                />
+              </a>
+            </div>
+            <div class="flex-50 padding-2 wow fadeInRight">
+              <h3>Coronavirus (COVID-19) Map</h3>
+              <p>
+                Coronavirus (COVID-19) in the U.S. map and case count. Hover
+                over a county to see how many confired cases and deaths there
+                are across the country.
+              </p>
+              <a
+                class="btn btn-green"
+                href="https://jinredhub.github.io/us-map-covid-19/"
+                >visit website</a
+              >
+            </div>
+          </div>
 
-        <script src="js/wow.min.js"></script>
-        <script src="js/main.js"></script>
+          <div class="padding50"></div>
+          <div class="padding50"></div>
 
-    </body>
+          <div class="disp-flex">
+            <div class="flex-50 padding-2 wow fadeInLeft">
+              <a href="https://jinredhub.github.io/daw/">
+                <img
+                  class="lazyload"
+                  data-src="./images/portfolio_daw.png"
+                  alt="thumbnail of digital audio workstation website"
+                />
+              </a>
+            </div>
+            <div class="flex-50 padding-2 wow fadeInRight">
+              <h3>DAW</h3>
+              <p>
+                Easy to use Digital Audio Workstation that runs in your browser.
+                Upload your audio files, mix them together, export in a single
+                audio file.
+              </p>
+              <a class="btn btn-green" href="https://jinredhub.github.io/daw/"
+                >visit website</a
+              >
+            </div>
+          </div>
+
+          <div class="padding50"></div>
+          <div class="padding50"></div>
+
+          <div class="disp-flex">
+            <div class="flex-50 padding-2 wow fadeInLeft">
+              <a href="https://jinredhub.github.io/arpeggios/">
+                <img
+                  class="lazyload"
+                  data-src="./images/portfolio_arpeggios.png"
+                  alt="thumbnail of pinit website"
+                />
+              </a>
+            </div>
+            <div class="flex-50 padding-2 wow fadeInRight">
+              <h3>Arpeggios</h3>
+              <p>
+                An arpeggio is a chord played one note at a time. This
+                experiment lets you play arpeggios in different patterns. Tap
+                the wheel to explore major and minor chords.
+              </p>
+              <a
+                class="btn btn-green"
+                href="https://jinredhub.github.io/arpeggios/"
+                >visit website</a
+              >
+            </div>
+          </div>
+
+          <div class="padding50"></div>
+          <div class="padding50"></div>
+
+          <div class="disp-flex">
+            <div class="flex-50 padding-2 wow fadeInLeft">
+              <a href="https://vrooms.github.io/entrance/">
+                <img
+                  class="lazyload"
+                  data-src="./images/portfolio_vrooms.png"
+                  alt="thumbnail of vr-webapp"
+                />
+              </a>
+            </div>
+            <div class="flex-50 padding-2 wow fadeInRight">
+              <h3>Vrooms</h3>
+              <p>
+                This app allows you to place furniture of your choice into a
+                room, and fit them to the exact measurements of your room. You
+                can then view the resulting room in a 360 degree virtual reality
+                environment.
+              </p>
+              <a class="btn btn-green" href="https://vrooms.github.io/entrance/"
+                >visit website</a
+              >
+            </div>
+          </div>
+
+          <div class="padding50"></div>
+          <div class="padding50"></div>
+
+          <div class="disp-flex">
+            <div class="flex-50 padding-2 wow fadeInLeft">
+              <a href="https://pinterest.up.railway.app/">
+                <img
+                  class="lazyload"
+                  data-src="./images/portfolio_pinit.png"
+                  alt="thumbnail of pinit website"
+                />
+              </a>
+            </div>
+            <div class="flex-50 padding-2 wow fadeInRight">
+              <h3>PinIt</h3>
+              <p>
+                On this webapp, you are able to save Pins similar when you using
+                Pinterest. Please create your account to use this site.
+              </p>
+              <a class="btn btn-green" href="https://pinterest.up.railway.app/"
+                >visit website</a
+              >
+            </div>
+          </div>
+
+          <div class="padding50"></div>
+          <div class="padding50"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- footer -->
+    <footer
+      class="disp-flex justify-content--center align-items--center flex-dir-col"
+    >
+      <div class="padding-bottom-2">
+        <a
+          class="btn linkedin"
+          href="http://www.linkedin.com/in/jin-redmond"
+          aria-label="click to go to my linkedIn page"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a
+          class="btn github"
+          href="http://github.com/jinredhub"
+          aria-label="click to go to my github page"
+          ><i class="fab fa-github-alt"></i
+        ></a>
+      </div>
+      <p>Copyright <i class="fas fa-copyright"></i> 2020 Jin Redmond</p>
+    </footer>
+
+    <!-- lazysizes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/4.1.8/lazysizes.min.js"></script>
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.0.min.js"
+      integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>
