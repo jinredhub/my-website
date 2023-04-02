@@ -100,7 +100,7 @@ $(document).ready(function () {
     setTimeout(autoSlideV2, 5000);
   };
 
-  //  setTimeout(autoSlideV2, 5000);
+  setTimeout(autoSlideV2, 5000);
 
   $(".workModalContent").on("click", ".prev", function () {
     nextSlide("previous");
@@ -113,9 +113,7 @@ $(document).ready(function () {
   // render and opens work modal
   $(".workContainer").on("click", ".work", function () {
     const nameOfWork = $(this).closest(".work").data("company");
-    console.log("work", nameOfWork);
     const newSlides = workData[nameOfWork].slides;
-    console.log("s: ", newSlides);
 
     $("#slides").empty();
 
