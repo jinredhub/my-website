@@ -48,6 +48,28 @@ $(document).ready(function () {
         "Gelesis is a biotechnology company that develops innovative treatments for obesity and other metabolic disorders.",
       link: "https://www.myplenity.com/",
     },
+    kena: {
+      slides: [
+        "./images/work/kena1.jpg",
+        "./images/work/kena2.jpg",
+        "./images/work/kena3.jpg",
+      ],
+      companyName: "Kena",
+      description:
+        "Kena is a music learning platform as well as music creator marketplace.",
+      link: "https://www.kena.ai/",
+    },
+    foresight: {
+      slides: [
+        "./images/work/foresight1.jpg",
+        "./images/work/foresight2.jpg",
+        "./images/work/foresight3.jpg",
+      ],
+      companyName: "Foresight Mental Health",
+      description:
+        "Foresight is an organization committed to broadening access to therapy and psychiatry through insurance-covered services and virtual care.",
+      link: "https://www.foresightmentalhealth.com/",
+    },
   };
 
   // smooth scrolling
