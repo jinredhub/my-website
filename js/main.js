@@ -148,7 +148,7 @@ $(document).ready(function () {
     setTimeout(autoSlideV2, 5000);
   };
 
-  setTimeout(autoSlideV2, 5000);
+  // setTimeout(autoSlideV2, 5000);
 
   $(".workModalContent").on("click", ".prev", function () {
     nextSlide("previous");
@@ -162,6 +162,7 @@ $(document).ready(function () {
   $(".workContainer").on("click", ".work", function () {
     const nameOfWork = $(this).closest(".work").data("company");
     const newSlides = workData[nameOfWork].slides;
+    currentSlideIndex = 0;
 
     $("#slides").empty();
 
@@ -182,9 +183,10 @@ $(document).ready(function () {
     $(".workModalContent .btn-green").attr("href", workData[nameOfWork].link);
 
     const buttons = `
-            <a class='prev'>&#10094;</a>
-            <a class='next'>&#10095;</a>    
-        `;
+      <a class='prev'>&#10094;</a>
+      <a class='next'>&#10095;</a>    
+    `;
+
     $("#slides").append(buttons);
 
     // prevent body from scrolling
