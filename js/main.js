@@ -1,5 +1,29 @@
 $(document).ready(function () {
   const workData = {
+    nagase: {
+      slides: [
+        "./images/work/nagase1.jpg",
+        "./images/work/nagase2.jpg",
+        "./images/work/nagase3.jpg",
+        "./images/work/nagase4.jpg",
+      ],
+      companyName: "Nagase",
+      description:
+        "Nagase is a prominent Japanese multinational corporation with diversified business operations including chemicals, pharmaceuticals, food, electronics materials, and industrial materials.",
+      link: "https://www.nagase.com/",
+    },
+    comcast: {
+      slides: [
+        "./images/work/comcast1.jpg",
+        "./images/work/comcast2.jpg",
+        "./images/work/comcast3.jpg",
+        "./images/work/comcast4.jpg",
+      ],
+      companyName: "Comcast",
+      description:
+        "Comcast is one of the largest cable and internet service providers in the United States, and it has a significant presence in various regions across the country.",
+      link: "https://business.comcast.com/",
+    },
     zoom: {
       slides: [
         "./images/work/zoom1.jpg",
