@@ -1,5 +1,17 @@
 $(document).ready(function () {
   const workData = {
+    acadia: {
+      slides: [
+        "./images/work/acadia1.jpg",
+        "./images/work/acadia2.jpg",
+        "./images/work/acadia3.jpg",
+        "./images/work/acadia4.jpg",
+      ],
+      companyName: "Acadia",
+      description:
+        "Acadia Pharmaceuticals Inc. is a biopharmaceutical company specializing in developing treatments for central nervous system disorders.",
+      link: "https://www.moretoparkinsons.com/",
+    },
     nagase: {
       slides: [
         "./images/work/nagase1.jpg",
