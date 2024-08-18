@@ -1033,7 +1033,7 @@ body.modalOpen {
   border-radius: 0 3px 3px 0;
   user-select: none;
   z-index: 3;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .next {
   right: 0;
