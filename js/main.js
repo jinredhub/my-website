@@ -1,5 +1,17 @@
 $(document).ready(function () {
   const workData = {
+    alnylam: {
+      slides: [
+        "./images/work/alnylam1.jpg",
+        "./images/work/alnylam2.jpg",
+        "./images/work/alnylam3.jpg",
+        "./images/work/alnylam4.jpg",
+      ],
+      companyName: "Alnylam",
+      description:
+        "alnylam Pharmaceuticals is a biopharma company specializing in RNA interference therapeutics, which 'silence' specific disease-causing genes.",
+      link: "https://www.moretoparkinsons.com/",
+    },
     acadia: {
       slides: [
         "./images/work/acadia1.jpg",
