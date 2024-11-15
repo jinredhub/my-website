@@ -9,8 +9,8 @@ $(document).ready(function () {
       ],
       companyName: "Alnylam",
       description:
-        "alnylam Pharmaceuticals is a biopharma company specializing in RNA interference therapeutics, which 'silence' specific disease-causing genes.",
-      link: "https://www.moretoparkinsons.com/",
+        "Alnylam Pharmaceuticals is a biopharma company specializing in RNA interference therapeutics, which 'silence' specific disease-causing genes.",
+      link: "https://www.attr-amyloidosis.com/",
     },
     acadia: {
       slides: [
