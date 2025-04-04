@@ -1,5 +1,17 @@
 $(document).ready(function () {
   const workData = {
+    amvuttra: {
+      slides: [
+        "./images/work/amvuttra1.jpg",
+        "./images/work/amvuttra2.jpg",
+        "./images/work/amvuttra3.jpg",
+        "./images/work/amvuttra4.jpg",
+      ],
+      companyName: "Amvuttra",
+      description:
+        "Amvuttra (vutrisiran) is a prescription medicine for adults by Alnylam Pharmaceuticals.",
+      link: "https://www.amvuttra.com/",
+    },
     alnylam: {
       slides: [
         "./images/work/alnylam1.jpg",
